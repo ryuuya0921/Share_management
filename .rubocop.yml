@@ -7,3 +7,9 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - '.git/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
