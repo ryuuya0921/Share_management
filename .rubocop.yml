@@ -1,0 +1,9 @@
+#ここにはrubocopで検証したくないファイルやフォルダを指定
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
