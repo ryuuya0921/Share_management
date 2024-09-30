@@ -29,6 +29,7 @@ ja:
       failure: "%{kind}で認証できませんでした: \"%{reason}\""
       success: "%{kind}アカウントで正常に認証されました。"
     passwords:
+      too_short: "パスワードは%{count}文字以上で入力してください"
       no_token: "パスワードリセットメールから来た場合でなければ、このページにアクセスできません。"
       send_instructions: "数分以内にパスワードリセット手順を記載したメールが届きます。"
       send_paranoid_instructions: "データベースにメールアドレスが存在する場合、パスワードリセットリンクがメールに送信されます。"
@@ -53,6 +54,7 @@ ja:
       unlocked: "アカウントのロックが正常に解除されました。続けるにはログインしてください。"
   errors:
     messages:
+      too_short: "%{count}文字以上で入力してください"
       already_confirmed: "すでに確認されています。ログインしてください。"
       confirmation_period_expired: "確認期限が過ぎています（%{period}以内に確認が必要）。新しい確認をリクエストしてください。"
       expired: "期限が切れています。新しいリクエストをしてください。"
