@@ -4,6 +4,10 @@ ja:
       models:
         user:
           attributes:
+            email:
+              blank: 'メールアドレスを入力してください'
+            password:
+              blank: 'パスワードを入力してください'
             password_confirmation:
               confirmation: 'パスワード確認が一致しません'
   devise:
@@ -62,6 +66,7 @@ ja:
   errors:
     format: '%{message}'
     messages:
+      blank: "入力してください"
       too_short: "%{count}文字以上で入力してください"
       already_confirmed: "すでに確認されています。ログインしてください。"
       confirmation_period_expired: "確認期限が過ぎています（%{period}以内に確認が必要）。新しい確認をリクエストしてください。"
