@@ -47,8 +47,8 @@ ja:
       updated: "パスワードが正常に変更されました。ログインしました。"
       updated_not_active: "パスワードが正常に変更されました。"
     registrations:
-      destroyed: "さようなら！アカウントは正常に削除されました。またお会いできることを願っています。"
-      signed_up: "ようこそ！正常に登録されました。"
+      destroyed: "さようなら！アカウントは正常に削除されました。またお会いできることを願っています！"
+      signed_up: "ようこそ！思い出の森へ！"
       signed_up_but_inactive: "正常に登録されましたが、アカウントはまだ有効化されていません。"
       signed_up_but_locked: "正常に登録されましたが、アカウントはロックされています。"
       signed_up_but_unconfirmed: "確認リンクを記載したメールが送信されました。メール内のリンクをクリックしてアカウントを有効化してください。"
@@ -56,7 +56,7 @@ ja:
       updated: "アカウント情報が正常に更新されました。"
       updated_but_not_signed_in: "アカウント情報が正常に更新されましたが、パスワードが変更されたため、再度ログインが必要です。"
     sessions:
-      signed_in: "正常にログインしました。"
+      signed_in: "ようこそ！思い出の森へ！"
       signed_out: "正常にログアウトしました。"
       already_signed_out: "すでにログアウトしています。"
     unlocks:
