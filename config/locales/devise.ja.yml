@@ -1,4 +1,11 @@
 ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: 'パスワード確認が一致しません' # Password confirmationは表示されない
   devise:
     confirmations:
       confirmed: "メールアドレスが正常に確認されました。"
@@ -53,6 +60,7 @@ ja:
       send_paranoid_instructions: "アカウントが存在する場合、数分以内にロック解除手順を記載したメールが届きます。"
       unlocked: "アカウントのロックが正常に解除されました。続けるにはログインしてください。"
   errors:
+    format: '%{message}' # ここで属性名を含めない設定を追加
     messages:
       too_short: "%{count}文字以上で入力してください"
       already_confirmed: "すでに確認されています。ログインしてください。"
