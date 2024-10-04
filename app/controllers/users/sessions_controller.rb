@@ -3,7 +3,7 @@ module Users
     def guest_sign_in
       user = User.guest
       sign_in user
-      redirect_to root_path, notice: 'ようこそ！ゲストユーザーとしてログインしました。'
+      redirect_to user_path(user), notice: 'ゲストユーザーとしてログインしました。'
     end
   end
 end
