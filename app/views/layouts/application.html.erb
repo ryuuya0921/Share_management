@@ -8,9 +8,26 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'rails-ujs' %>
   </head>
 
   <body>
+      <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to "ログイン設定", edit_user_registration_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか？", turbo: false } %></li>
+
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %></li>
+        <% end %>
+      </ul>
+    </nav>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
   </body>
 </html>
