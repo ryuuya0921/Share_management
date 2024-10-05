@@ -1,0 +1,13 @@
+<h1><%= @user.name %> さんのプロフィール</h1>
+
+<p>アイコン</p>
+<% if @user.profile_image.attached? %>
+  <%= image_tag @user.profile_image.variant(resize_to_limit: [100, 100]) %>
+<% else %>
+  <p>編集からアイコンを設定しよう！</p>
+<% end %>
+
+<p>自己紹介: <%= @user.bio.present? ? @user.bio : '編集から自己紹介を設定しよう！' %></p>
+
+<%= link_to 'プロフィールを編集', edit_user_path(@user) %>
+<p><%= link_to '戻る', user_path(@user) %></p>
