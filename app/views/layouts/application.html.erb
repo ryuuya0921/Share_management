@@ -17,6 +17,11 @@
         <% if user_signed_in? %>
           <li><%= link_to "ログイン設定", edit_user_registration_path %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか？", turbo: false } %></li>
+          <li><%= link_to 'プロフィール', profile_path(current_user) %></li>
+
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image.variant(resize_to_limit: [100, 100]) %>
+          <% end %>
 
         <% else %>
           <li><%= link_to "新規登録", new_user_registration_path %></li>
@@ -28,6 +33,5 @@
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
   </body>
 </html>
