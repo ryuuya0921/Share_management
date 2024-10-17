@@ -1,9 +1,13 @@
 <!-- app/views/users/edit.html.erb -->
 <%= form_for @user, html: { multipart: true } do |f| %>
-  <div class="field">
-    <%= f.label :name, "名前：" %>
-    <%= f.text_field :name, placeholder: "新しい名前を入力" %>
-  </div>
+  <% unless @user.guest? %>
+    <div class="field">
+      <%= f.label :name, "名前：" %>
+      <%= f.text_field :name, placeholder: "新しい名前を入力" %>
+    </div>
+  <% else %>
+      <p>ゲストユーザー様は名前の変更はできません。</p>
+  <% end %>
 
   <div class="field">
     <%= f.label :profile_image, "プロフィール画像" %><br>
