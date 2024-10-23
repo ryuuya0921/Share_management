@@ -10,6 +10,7 @@
         <%= image_tag post.image, size: "150x150" %>
       <% end %>
       <p><%= post.body.truncate(100) %></p>
+      <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
   <% end %>
 </ul>
 
