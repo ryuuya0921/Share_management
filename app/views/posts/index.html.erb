@@ -1,1 +1,16 @@
-<h1><%= current_user.name %> の本棚</h1>
+<h1>思い出の図書館</h1>
+<h2><%= current_user.name %> の本棚</h2>
+<p><%= link_to '新規作成', new_post_path %></p>
+
+<ul>
+  <% @posts.each do |post| %>
+      <p><%= post.category %></p>
+      <h3><%= link_to post.title, post_path(post) %></h3>
+      <% if post.image.attached? %>
+        <%= image_tag post.image, size: "150x150" %>
+      <% end %>
+      <p><%= post.body.truncate(100) %></p>
+  <% end %>
+</ul>
+
+<p>みんなの本棚を見る</p>
