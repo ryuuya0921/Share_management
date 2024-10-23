@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = current_user.posts
   end
@@ -11,15 +13,24 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, notice: '投稿が作成されました。'
+      redirect_to posts_path, notice: '投稿が作成されました。'
     else
       render :new
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: '投稿が削除されました。'
   end
 
   private
 
   def post_params
     params.require(:post).permit(:title, :body, :category, :image)
+  end
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
   end
 end
