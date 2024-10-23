@@ -24,6 +24,18 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: '投稿が削除されました。'
   end
 
+  def edit; end
+
+  def show; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to posts_path, notice: '投稿が更新されました'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def post_params
