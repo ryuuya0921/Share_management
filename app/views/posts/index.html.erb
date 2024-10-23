@@ -5,7 +5,7 @@
 <ul>
   <% @posts.each do |post| %>
       <p><%= post.category %></p>
-      <h3><%= link_to post.title, post_path(post) %></h3>
+      <h3><%= link_to post.title, edit_post_path(post) %></h3>
       <% if post.image.attached? %>
         <%= image_tag post.image, size: "150x150" %>
       <% end %>
