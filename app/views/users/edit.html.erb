@@ -1,0 +1,35 @@
+<!-- app/views/users/edit.html.erb -->
+<%= form_for @user, html: { multipart: true } do |f| %>
+  <% unless @user.guest? %>
+    <div class="field">
+      <%= f.label :name, "名前：" %>
+      <%= f.text_field :name, placeholder: "新しい名前を入力" %>
+    </div>
+  <% else %>
+      <p>ゲストユーザー様は名前の変更はできません。</p>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :profile_image, "プロフィール画像" %><br>
+    <%= f.file_field :profile_image %>
+    <% if @user.profile_image.attached? %>
+      <p>現在の画像:</p>
+      <%= image_tag @user.profile_image.variant(resize_to_limit: [100, 100]) %>
+
+      <div class="field">
+        <%= f.check_box :remove_profile_image %>
+        <%= f.label :remove_profile_image, "プロフィール画像を削除する" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :bio, "自己紹介" %><br>
+    <%= f.text_area :bio, rows: 5 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+  <%= link_to '戻る', profile_path(current_user) %>
+<% end %>
