@@ -3,6 +3,6 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validates :title, presence: true
-  validates :body, presence: true
   validates :category, presence: true
+  validates :genre, presence: true
 end
