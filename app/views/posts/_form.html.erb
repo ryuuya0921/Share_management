@@ -1,12 +1,14 @@
 <%= form_with(model: @post, local: true) do |form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> が発生しました:</h2>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
+      <% if @post.errors[:user].any? %>
+        <p class="error_message"><%= @post.errors[:user].first %></p>
+      <% end %>
     </div>
   <% end %>
 
@@ -39,4 +41,5 @@
     <%= form.submit @post.new_record? ? '投稿する' : '更新する' %>
   </div>
 <% end %>
+
 <p><%= link_to '戻る', posts_path %></p>
