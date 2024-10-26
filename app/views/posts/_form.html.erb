@@ -28,8 +28,8 @@
   </div>
 
   <div>
-    <%= form.label :body, '内容' %>
-    <%= form.text_area :body %>
+    <%= form.label :body, '内容（800文字以内）' %>
+    <%= form.text_area :body, maxlength: 800 %>
   </div>
 
   <div>
