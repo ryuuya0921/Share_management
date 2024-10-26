@@ -1,5 +1,19 @@
 ja:
   activerecord:
+    models:
+      user: "ユーザー"
+      post: "投稿"
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      post:
+        title: "タイトル"
+        body: "内容"
+        category: "カテゴリー"
+        genre: "ジャンル"
+        user: "ユーザー"
     errors:
       models:
         user:
@@ -10,6 +24,18 @@ ja:
               blank: 'パスワードを入力してください'
             password_confirmation:
               confirmation: 'パスワード確認が一致しません'
+        post:
+          attributes:
+            title:
+              blank: "タイトルを入力してください"
+            body:
+              blank: "内容を入力してください"
+            category:
+              blank: "カテゴリーを選択してください"
+            genre:
+              blank: "ジャンルを選択してください"
+            user:
+              required: "ユーザーは必須です"
   devise:
     confirmations:
       confirmed: "メールアドレスが正常に確認されました。"
