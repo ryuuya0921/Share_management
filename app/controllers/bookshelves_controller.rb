@@ -1,6 +1,6 @@
 class BookshelvesController < ApplicationController
   def index
-    @bookshelves = User.includes(:posts).where.not(id: current_user.id)
+    @bookshelves = User.includes(:posts).where.not(id: current_user.id).where(posts: { id: Post.select(:id) })
     @total_users = @bookshelves.count
     @bookshelves = filter_bookshelves(@bookshelves)
   end

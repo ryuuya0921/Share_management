@@ -5,7 +5,6 @@
     <li>
       <h2><%= link_to "#{user.name} の本棚", bookshelf_path(user) %></h2>
       <p>投稿数: <%= user.posts.count %></p>
-      <!-- 本棚の概要など他の情報を表示 -->
     </li>
   <% end %>
 </ul>
