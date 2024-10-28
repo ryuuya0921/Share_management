@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = current_user.posts.page(params[:page]).per(9)
+    @posts = filter_posts(current_user.posts).page(params[:page]).per(9)
   end
 
   def new
@@ -44,5 +44,27 @@ class PostsController < ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def filter_posts(posts)
+    posts = filter_by_category(posts)
+    posts = filter_by_genre(posts)
+    filter_by_keyword(posts)
+  end
+
+  def filter_by_category(posts)
+    params[:category].present? ? posts.where(category: params[:category]) : posts
+  end
+
+  def filter_by_genre(posts)
+    params[:genre].present? ? posts.where(genre: params[:genre]) : posts
+  end
+
+  def filter_by_keyword(posts)
+    if params[:keyword].present?
+      posts.where('title LIKE ? OR body LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    else
+      posts
+    end
   end
 end

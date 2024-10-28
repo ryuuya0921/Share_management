@@ -2,6 +2,22 @@
 <h2><%= current_user.name %> の本棚</h2>
 <p><%= link_to '新規作成', new_post_path %></p>
 
+<%= form_with url: posts_path, method: :get, local: true do %>
+  <div>
+    <label>カテゴリーで検索:</label>
+    <%= select_tag :category, options_for_select(Post.pluck(:category).uniq), include_blank: 'すべて' %>
+  </div>
+  <div>
+    <label>ジャンルで検索:</label>
+    <%= select_tag :genre, options_for_select(Post.pluck(:genre).uniq), include_blank: 'すべて' %>
+  </div>
+  <div>
+    <label>ワード検索:</label>
+    <%= text_field_tag :keyword, params[:keyword] %>
+  </div>
+  <%= submit_tag '検索', class: 'btn' %>
+<% end %>
+
 <ul>
   <% @posts.each do |post| %>
       <p><%= post.category %></p>
