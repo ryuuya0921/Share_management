@@ -1,0 +1,12 @@
+<h1>みんなの本棚</h1>
+<p>みんなの本棚のユーザー数: <%= @total_users %></p>
+<ul>
+  <% @bookshelves.each do |user| %>
+    <li>
+      <h2><%= link_to "#{user.name} の本棚", bookshelf_path(user) %></h2>
+      <p>投稿数: <%= user.posts.count %></p>
+      <!-- 本棚の概要など他の情報を表示 -->
+    </li>
+  <% end %>
+</ul>
+  <%= link_to "自分の本棚に戻る", posts_path %>
