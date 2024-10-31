@@ -7,7 +7,12 @@ class BookshelvesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookshelf = filter_posts(@user.posts).page(params[:page]).per(9)
+
+    if @user.bookshelf_public || current_user == @user
+      @bookshelf = filter_posts(@user.posts.where(public: true)).page(params[:page]).per(9)
+    else
+      redirect_to bookshelves_path, alert: 'このユーザーの本棚は非公開です。'
+    end
   end
 
   private

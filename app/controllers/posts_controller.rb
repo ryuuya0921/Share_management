@@ -6,6 +6,11 @@ class PostsController < ApplicationController
     @posts = filter_posts(current_user.posts).page(params[:page]).per(9)
   end
 
+  def toggle_bookshelf_visibility
+    current_user.update(bookshelf_public: !current_user.bookshelf_public)
+    redirect_to posts_path, notice: '本棚の公開設定が更新されました。'
+  end
+
   def new
     @post = Post.new
   end
@@ -39,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category, :genre, :image)
+    params.require(:post).permit(:title, :body, :category, :genre, :image, :public)
   end
 
   def set_post
@@ -47,6 +52,7 @@ class PostsController < ApplicationController
   end
 
   def filter_posts(posts)
+    posts = posts.where(public: true) if params[:public_only] == 'true'
     posts = filter_by_category(posts)
     posts = filter_by_genre(posts)
     filter_by_keyword(posts)
