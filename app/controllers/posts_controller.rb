@@ -3,7 +3,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = filter_posts(current_user.posts).page(params[:page]).per(9)
+    @posts = current_user.posts
+    if params[:status] == 'public'
+      @posts = @posts.where(public: true)
+    elsif params[:status] == 'private'
+      @posts = @posts.where(public: false)
+    end
+    @posts = filter_posts(@posts).page(params[:page]).per(9)
   end
 
   def toggle_bookshelf_visibility
