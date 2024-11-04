@@ -1,0 +1,50 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% if @post.errors[:user].any? %>
+        <p class="error_message"><%= @post.errors[:user].first %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :category, 'カテゴリー' %>
+    <%= form.select :category, [['映画', '映画'], ['アニメ', 'アニメ'], ['ドラマ', 'ドラマ'], ['漫画', '漫画'], ['本', '本']], prompt: 'カテゴリーを選択' %>
+  </div>
+
+  <div>
+    <%= form.label :genre, 'ジャンル' %>
+    <%= form.select :genre, [['アクション', 'アクション'], ['SF', 'SF'], ['ホラー', 'ホラー'], ['サスペンス', 'サスペンス'], ['コメディ', 'コメディ'], ['ラブロマンス', 'ラブロマンス'], ['スポーツ', 'スポーツ']], prompt: 'ジャンルを選択' %>
+  </div>
+
+  <div>
+    <%= form.label :body, '内容（800文字以内）' %>
+    <%= form.text_area :body, maxlength: 800 %>
+  </div>
+
+  <div>
+    <%= form.label :image, '画像' %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :public, '公開設定' %>
+    <%= form.select :public, [['公開', true], ['非公開', false]], prompt: '公開設定を選択' %>
+  </div>
+
+  <div>
+    <%= form.submit @post.new_record? ? '投稿する' : '更新する' %>
+  </div>
+<% end %>
+
+<p><%= link_to '戻る', posts_path %></p>

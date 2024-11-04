@@ -1,0 +1,60 @@
+<h1>思い出の図書館</h1>
+<h2><%= current_user.name %> の本棚</h2>
+<p><%= link_to '新規作成', new_post_path %></p>
+
+<%= button_to(
+  current_user.bookshelf_public ? '本棚を非公開にする' : '本棚を公開にする',
+  toggle_bookshelf_visibility_posts_path,
+  method: :post,
+  class: 'btn'
+) %>
+
+<p>
+  本棚の公開設定: 
+  <strong><%= current_user.bookshelf_public ? '公開中です' : '非公開中です' %></strong>
+</p>
+<p>
+  <% if current_user.bookshelf_public %>
+    この本棚は現在公開されており、他のユーザーも閲覧することができます。自分の作品や感想を共有して、共感や新しい発見を楽しみましょう。
+  <% else %>
+    この本棚は現在非公開になっており、あなただけが閲覧できます。プライバシーを保ちながら、自分の記録を楽しむことができます。
+  <% end %>
+</p>
+
+<%= form_with url: posts_path, method: :get, local: true do %>
+  <div>
+    <label>カテゴリーで検索:</label>
+    <%= select_tag :category, options_for_select(Post.pluck(:category).uniq), include_blank: 'すべて' %>
+  </div>
+  <div>
+    <label>ジャンルで検索:</label>
+    <%= select_tag :genre, options_for_select(Post.pluck(:genre).uniq), include_blank: 'すべて' %>
+  </div>
+  <div>
+    <label>ワード検索:</label>
+    <%= text_field_tag :keyword, params[:keyword] %>
+  </div>
+  <%= submit_tag '検索', class: 'btn' %>
+<% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+      <p><%= post.category %></p>
+      <p><%= post.genre %></p>
+      <h3><%= link_to post.title, edit_post_path(post) %></h3>
+      <% if post.image.attached? %>
+        <%= link_to edit_post_path(post) do %>
+          <%= image_tag post.image, size: "150x150" %>
+        <% end %>
+      <% else %>
+        <%= link_to edit_post_path(post) do %>
+          <%= image_tag 'book_01_brown.png', size: "150x150" %>
+        <% end %>
+      <% end %>
+      <p><%= post.body.truncate(100) %></p>
+      <p>状態: <%= post.public ? '公開中' : '非公開中' %></p>
+      <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  <% end %>
+</ul>
+<%= paginate @posts %>
+<p><%= link_to 'みんなの本棚を見る', bookshelves_path %></p>

@@ -1,0 +1,33 @@
+<h1><%= @user.name %> の本棚</h1>
+
+<%= form_with url: bookshelf_path(@user), method: :get, local: true do %>
+  <div>
+    <label>カテゴリーで検索:</label>
+    <%= select_tag :category, options_for_select(Post.distinct.pluck(:category), params[:category]), include_blank: 'すべて' %>
+  </div>
+  <div>
+    <label>ジャンルで検索:</label>
+    <%= select_tag :genre, options_for_select(Post.distinct.pluck(:genre), params[:genre]), include_blank: 'すべて' %>
+  </div>
+  <div>
+    <label>ワード検索:</label>
+    <%= text_field_tag :keyword, params[:keyword] %>
+  </div>
+  <%= submit_tag '検索', class: 'btn' %>
+<% end %>
+
+<ul>
+  <% @bookshelf.each do |post| %>
+      <h3><%= post.title %></h3>
+      <p>カテゴリー: <%= post.category %></p>
+      <p>ジャンル: <%= post.genre %></p>
+      <% if post.image.attached? %>
+        <%= image_tag post.image, size: "150x150" %>
+      <% else %>
+        <%= image_tag 'book_01_brown.png', size: "150x150" %>
+      <% end %>
+      <p><%= post.body.truncate(100) %></p>
+  <% end %>
+</ul>
+<%= paginate @bookshelf %>
+<p><%= link_to 'みんなの本棚に戻る', bookshelves_path %></p>
