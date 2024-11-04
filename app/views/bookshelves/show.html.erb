@@ -18,16 +18,24 @@
 
 <ul>
   <% @bookshelf.each do |post| %>
-      <h3><%= post.title %></h3>
-      <p>カテゴリー: <%= post.category %></p>
-      <p>ジャンル: <%= post.genre %></p>
-      <% if post.image.attached? %>
-        <%= image_tag post.image, size: "150x150" %>
-      <% else %>
-        <%= image_tag 'book_01_brown.png', size: "150x150" %>
-      <% end %>
-      <p><%= post.body.truncate(100) %></p>
+    <h3><%= post.title %></h3>
+    <p>カテゴリー: <%= post.category %></p>
+    <p>ジャンル: <%= post.genre %></p>
+    <% if post.image.attached? %>
+      <%= image_tag post.image, size: "150x150" %>
+    <% else %>
+      <%= image_tag 'book_01_brown.png', size: "150x150" %>
+    <% end %>
+    <p><%= post.body.truncate(100) %></p>
+    <!-- いいねボタンといいね数 -->
+    <% if current_user.voted_for?(post) %>
+      <%= button_to 'いいねを取り消す', unlike_post_path(post), method: :delete, class: 'btn' %>
+    <% else %>
+      <%= button_to 'いいね', like_post_path(post), method: :post, class: 'btn' %>
+    <% end %>
+    <p>いいね数: <%= post.get_likes.size %></p>
   <% end %>
 </ul>
+
 <%= paginate @bookshelf %>
 <p><%= link_to 'みんなの本棚に戻る', bookshelves_path %></p>
