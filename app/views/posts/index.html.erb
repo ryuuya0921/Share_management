@@ -21,6 +21,10 @@
   <% end %>
 </p>
 
+<%= link_to '公開中', posts_path(status: 'public'), class: 'btn' %>
+<%= link_to '非公開中', posts_path(status: 'private'), class: 'btn' %>
+<%= link_to 'すべて表示', posts_path, class: 'btn' %>
+
 <%= form_with url: posts_path, method: :get, local: true do %>
   <div>
     <label>カテゴリーで検索:</label>
@@ -54,6 +58,7 @@
       <p><%= post.body.truncate(100) %></p>
       <p>状態: <%= post.public ? '公開中' : '非公開中' %></p>
       <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+      <p>いいね数: <%= post.get_likes.size %></p>
   <% end %>
 </ul>
 <%= paginate @posts %>
