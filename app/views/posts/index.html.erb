@@ -61,5 +61,7 @@
       <p>いいね数: <%= post.get_likes.size %></p>
   <% end %>
 </ul>
+
 <%= paginate @posts %>
+<p>あなたの投稿数: <%= @post_count %>件</p>
 <p><%= link_to 'みんなの本棚を見る', bookshelves_path %></p>

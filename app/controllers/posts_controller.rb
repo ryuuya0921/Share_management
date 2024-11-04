@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.posts
+    @post_count = @posts.count
+
     if params[:status] == 'public'
       @posts = @posts.where(public: true)
     elsif params[:status] == 'private'
