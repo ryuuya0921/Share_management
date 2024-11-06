@@ -1,0 +1,2 @@
+module PlazaPostsHelper
+end
