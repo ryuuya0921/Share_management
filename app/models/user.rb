@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :posts, dependent: :destroy # ユーザーが削除されたら投稿も削除される
+  acts_as_voter
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

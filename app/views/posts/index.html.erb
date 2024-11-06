@@ -21,6 +21,17 @@
   <% end %>
 </p>
 
+<div>
+  <%= link_to '公開中', posts_path(status: 'public'), class: 'btn' %>
+  <%= link_to '非公開中', posts_path(status: 'private'), class: 'btn' %>
+  <%= link_to 'すべて表示', posts_path, class: 'btn' %>
+</div>
+
+<div>
+  <%= link_to '最新順', posts_path(sort: 'latest'), class: 'btn' %>
+  <%= link_to '過去順', posts_path(sort: 'oldest'), class: 'btn' %>
+</div>
+
 <%= form_with url: posts_path, method: :get, local: true do %>
   <div>
     <label>カテゴリーで検索:</label>
@@ -39,12 +50,13 @@
 
 <ul>
   <% @posts.each do |post| %>
+    <li>
       <p><%= post.category %></p>
       <p><%= post.genre %></p>
       <h3><%= link_to post.title, edit_post_path(post) %></h3>
       <% if post.image.attached? %>
         <%= link_to edit_post_path(post) do %>
-          <%= image_tag post.image, size: "150x150" %>
+          <%= image_tag url_for(post.image), size: "150x150" %>
         <% end %>
       <% else %>
         <%= link_to edit_post_path(post) do %>
@@ -54,7 +66,11 @@
       <p><%= post.body.truncate(100) %></p>
       <p>状態: <%= post.public ? '公開中' : '非公開中' %></p>
       <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+      <p>いいね数: <%= post.get_likes.size %></p>
+    </li>
   <% end %>
 </ul>
+
 <%= paginate @posts %>
+<p>あなたの投稿数: <%= @post_count %>件</p>
 <p><%= link_to 'みんなの本棚を見る', bookshelves_path %></p>

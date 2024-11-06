@@ -1,24 +1,29 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-  devise_for :users, controllers: {
-    registrations: 'users/registrations'
-  }
-
-  resources :users, only: [:show, :edit, :update] # ユーザー専用ページ用のルートを定義
-  resources :bookshelves, only: [:index, :show] # 他ユーザー閲覧ページ用のルートを定義
   root 'home#index'
 
-  get 'profiles/:id', to: 'profiles#show', as: 'profile'#新しいプロフィール表示ページ用
+  # Devise routes for user authentication
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :posts
+  # User profile routes
+  resources :users, only: [:show, :edit, :update]
+  get 'profiles/:id', to: 'profiles#show', as: 'profile'
 
+  # Guest sign-in route
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
+  # Bookshelves routes for viewing other users' bookshelves
+  resources :bookshelves, only: [:index, :show]
+
+  # Posts routes with additional actions
   resources :posts do
     collection do
       post :toggle_bookshelf_visibility
+    end
+    member do
+      post 'like', to: 'likes#like'
+      delete 'unlike', to: 'likes#unlike'
     end
   end
 end
