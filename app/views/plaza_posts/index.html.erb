@@ -7,9 +7,9 @@
 <ul>
   <% @plaza_posts.each do |post| %>
     <li>
+      <p>投稿者: <%= post.user.name %></p>
       <h3><%= link_to post.title, plaza_post_path(post) %></h3>
-      <p><%= post.content.truncate(100) %></p>
-      <p>投稿者: <%= post.user.name %> | <%= l(post.created_at, format: :short) %></p>
+      <%= l(post.created_at, format: :short) %>
       
       <% if post.user == current_user %>
         <%= link_to '削除', plaza_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
@@ -17,5 +17,4 @@
     </li>
   <% end %>
 </ul>
-
 <%= paginate @plaza_posts %>
