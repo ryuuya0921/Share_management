@@ -1,5 +1,6 @@
 class PlazaPostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_plaza_post, only: [:show, :destroy]
 
   def index
     @plaza_posts = PlazaPost.order(created_at: :desc).page(params[:page]).per(10)
@@ -22,7 +23,20 @@ class PlazaPostsController < ApplicationController
     end
   end
 
+  def destroy
+    if @plaza_post.user == current_user
+      @plaza_post.destroy
+      redirect_to plaza_posts_path, notice: '投稿が削除されました。'
+    else
+      redirect_to plaza_posts_path, alert: '削除する権限がありません。'
+    end
+  end
+
   private
+
+  def set_plaza_post
+    @plaza_post = PlazaPost.find(params[:id])
+  end
 
   def plaza_post_params
     params.require(:plaza_post).permit(:title, :content)
