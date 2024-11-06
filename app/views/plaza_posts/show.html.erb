@@ -1,0 +1,4 @@
+<h1><%= @plaza_post.title %></h1>
+<p><%= @plaza_post.content %></p>
+<p>投稿者: <%= @plaza_post.user.name %> | <%= l(@plaza_post.created_at, format: :long) %></p>
+<%= link_to 'みんなの広場に戻る', plaza_posts_path, class: 'btn' %>
