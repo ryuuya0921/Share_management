@@ -1,0 +1,17 @@
+<h1>みんなの広場</h1>
+<p>「みんなの広場」では、作品についての感想や意見を他のユーザーと共有できます。</p>
+<p>あなたが感動した作品について語り合ったり、他のユーザー様の感想を読んで新しい作品と出会うことができます。</p>
+
+<%= link_to '新しい投稿', new_plaza_post_path, class: 'btn' %>
+
+<ul>
+  <% @plaza_posts.each do |post| %>
+    <li>
+      <h3><%= link_to post.title, plaza_post_path(post) %></h3>
+      <p><%= post.content.truncate(100) %></p>
+      <p>投稿者: <%= post.user.name %> | <%= l(post.created_at, format: :short) %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @plaza_posts %>
