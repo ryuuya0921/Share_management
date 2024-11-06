@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # Bookshelves routes for viewing other users' bookshelves
   resources :bookshelves, only: [:index, :show]
+  resources :plaza_posts, only: [:index, :show, :new, :create]
 
   # Posts routes with additional actions
   resources :posts do
