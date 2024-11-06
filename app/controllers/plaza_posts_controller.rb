@@ -1,0 +1,2 @@
+class PlazaPostsController < ApplicationController
+end
