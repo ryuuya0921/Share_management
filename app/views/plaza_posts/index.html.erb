@@ -2,19 +2,20 @@
 <p>「みんなの広場」では、作品についての感想や意見を他のユーザーと共有できます。</p>
 <p>あなたが感動した作品について語り合ったり、他のユーザー様の感想を読んで新しい作品と出会うことができます。</p>
 
-<%= link_to '新しい投稿', new_plaza_post_path, class: 'btn' %>
+<%= link_to '新しい投稿を作成する', new_plaza_post_path, class: 'btn' %>
 
 <ul>
   <% @plaza_posts.each do |post| %>
     <li>
       <p>投稿者: <%= post.user.name %></p>
-      <h3><%= link_to post.title, plaza_post_path(post) %></h3>
+      <h3><%= link_to post.title, plaza_post_path(post)%></h3>
       <%= l(post.created_at, format: :short) %>
-      
+
       <% if post.user == current_user %>
         <%= link_to '削除', plaza_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
       <% end %>
     </li>
   <% end %>
 </ul>
+
 <%= paginate @plaza_posts %>
