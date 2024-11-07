@@ -27,4 +27,8 @@ Rails.application.routes.draw do
       delete 'unlike', to: 'likes#unlike'
     end
   end
+
+  resources :plaza_posts do
+    resources :comments, only: [:create, :destroy]
+  end
 end
