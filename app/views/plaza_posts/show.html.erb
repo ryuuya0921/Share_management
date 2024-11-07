@@ -5,4 +5,25 @@
   <%= link_to '編集', edit_plaza_post_path(@plaza_post), class: 'btn btn-primary' %>
   <%= link_to '削除', plaza_post_path(@plaza_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
 <% end %>
+
+<h3>コメント一覧</h3>
+<ul>
+  <% @plaza_post.comments.each_with_index do |comment, index| %>
+    <li>
+      <strong><%= index + 1 %> 名前：<%= comment.user.name %> <%= l(comment.created_at, format: :short) %></strong>
+      <p><%= comment.content %></p>
+      <% if comment.user == current_user %>
+        <%= link_to '削除', plaza_post_comment_path(@plaza_post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_with(model: [@plaza_post, Comment.new], local: true) do |form| %>
+  <div>
+    <%= form.label :content, 'コメント内容' %><br>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit 'コメントを投稿', class: 'btn btn-primary' %>
+<% end %>
 <p><%= link_to 'みんなの広場に戻る', plaza_posts_path, class: 'btn' %></p>
