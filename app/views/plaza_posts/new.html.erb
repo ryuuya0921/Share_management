@@ -6,8 +6,10 @@
     <%= form.text_field :title %>
   </div>
   <div>
-    <%= form.label :content, '内容' %>
+    <p><%= form.label :content, '内容を入力してください' %></p>
     <%= form.text_area :content %>
   </div>
   <%= form.submit '投稿する', class: 'btn' %>
 <% end %>
+
+<p><%= link_to 'みんなの広場に戻る', plaza_posts_path, class: 'btn' %></p>
