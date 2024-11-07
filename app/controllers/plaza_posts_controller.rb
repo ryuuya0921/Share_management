@@ -1,6 +1,6 @@
 class PlazaPostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_plaza_post, only: [:show, :destroy]
+  before_action :set_plaza_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @plaza_posts = PlazaPost.order(created_at: :desc).page(params[:page]).per(10)
@@ -8,6 +8,18 @@ class PlazaPostsController < ApplicationController
 
   def show
     @plaza_post = PlazaPost.find(params[:id])
+  end
+
+  def edit
+    redirect_to plaza_posts_path, alert: '編集する権限がありません。' unless @plaza_post.user == current_user
+  end
+
+  def update
+    if @plaza_post.update(plaza_post_params)
+      redirect_to plaza_post_path(@plaza_post), notice: '投稿が更新されました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def new
