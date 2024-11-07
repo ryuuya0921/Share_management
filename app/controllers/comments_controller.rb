@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_plaza_post
+  before_action :set_comment, only: [:destroy, :update]
 
   def create
     @comment = @plaza_post.comments.build(comment_params)
@@ -10,6 +11,14 @@ class CommentsController < ApplicationController
       redirect_to plaza_post_path(@plaza_post), notice: 'コメントが追加されました。'
     else
       redirect_to plaza_post_path(@plaza_post), alert: 'コメントを追加できませんでした。'
+    end
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to plaza_post_path(@plaza_post), notice: 'コメントが更新されました。'
+    else
+      redirect_to plaza_post_path(@plaza_post), alert: 'コメントの更新に失敗しました。'
     end
   end
 
@@ -27,6 +36,10 @@ class CommentsController < ApplicationController
 
   def set_plaza_post
     @plaza_post = PlazaPost.find(params[:plaza_post_id])
+  end
+
+  def set_comment
+    @comment = @plaza_post.comments.find(params[:id])
   end
 
   def comment_params
