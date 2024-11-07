@@ -11,10 +11,26 @@
   <% @plaza_post.comments.each_with_index do |comment, index| %>
     <li>
       <strong><%= index + 1 %> 名前：<%= comment.user.name %> <%= l(comment.created_at, format: :short) %></strong>
-      <p><%= comment.content %></p>
-      <% if comment.user == current_user %>
-        <%= link_to '削除', plaza_post_comment_path(@plaza_post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
-      <% end %>
+
+      <!-- コメント表示部分 -->
+      <div id="comment-display-<%= comment.id %>">
+        <p><%= comment.content %></p>
+        <% if comment.user == current_user %>
+          <%= link_to '編集', '#', class: 'btn btn-primary btn-sm', onclick: "toggleEditForm(#{comment.id}); return false;" %>
+          <%= link_to '削除', plaza_post_comment_path(@plaza_post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      </div>
+
+      <!-- インライン編集フォーム (デフォルトは非表示) -->
+      <div id="comment-edit-form-<%= comment.id %>" style="display: none;">
+        <%= form_with(model: [@plaza_post, comment], local: true, method: :patch) do |form| %>
+          <div>
+            <%= form.text_area :content, value: comment.content %>
+          </div>
+          <%= form.submit '更新', class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'キャンセル', '#', class: 'btn btn-secondary btn-sm', onclick: "toggleEditForm(#{comment.id}); return false;" %>
+        <% end %>
+      </div>
     </li>
   <% end %>
 </ul>
