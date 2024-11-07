@@ -5,10 +5,11 @@
 <%= link_to '新しい投稿を作成する', new_plaza_post_path, class: 'btn' %>
 
 <ul>
-  <% @plaza_posts.each do |post| %>
+  <% page_number = (params[:page] || 1).to_i %>
+  <% @plaza_posts.each_with_index do |post, index| %>
     <li>
-      <p>投稿者: <%= post.user.name %></p>
-      <h3><%= link_to post.title, plaza_post_path(post)%></h3>
+      <p><%= (page_number - 1) * 10 + index + 1 %> 投稿者: <%= post.user.name %></p>
+      <h3><%= link_to post.title, plaza_post_path(post) %></h3>
       <%= l(post.created_at, format: :short) %>
 
       <% if post.user == current_user %>
@@ -20,3 +21,4 @@
 </ul>
 
 <%= paginate @plaza_posts %>
+<p>現在の合計投稿件数: <%= @plaza_posts.total_count %> 件</p>
