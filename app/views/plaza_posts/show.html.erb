@@ -8,9 +8,12 @@
 
 <h3>コメント一覧</h3>
 <ul>
-  <% @plaza_post.comments.each_with_index do |comment, index| %>
+  <% page_number = (params[:page] || 1).to_i %>
+  <% @comments.each_with_index do |comment, index| %>
     <li>
-      <strong><%= index + 1 %> 名前：<%= comment.user.name %> <%= l(comment.created_at, format: :short) %></strong>
+      <strong>
+        <%= (page_number - 1) * 10 + index + 1 %> 名前：<%= comment.user.name %> <%= l(comment.created_at, format: :short) %>
+      </strong>
 
       <!-- コメント表示部分 -->
       <div id="comment-display-<%= comment.id %>">
@@ -34,6 +37,8 @@
     </li>
   <% end %>
 </ul>
+
+<%= paginate @comments %>
 
 <%= form_with(model: [@plaza_post, Comment.new], local: true) do |form| %>
   <div>

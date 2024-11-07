@@ -6,7 +6,10 @@ class PlazaPostsController < ApplicationController
     @plaza_posts = PlazaPost.order(created_at: :desc).page(params[:page]).per(10)
   end
 
-  def show; end
+  # def show; end
+  def show
+    @comments = @plaza_post.comments.order(created_at: :desc).page(params[:page]).per(10)
+  end
 
   def edit
     redirect_to plaza_posts_path, alert: '編集する権限がありません。' unless @plaza_post.user == current_user
