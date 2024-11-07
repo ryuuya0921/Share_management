@@ -4,6 +4,16 @@
 
 <%= link_to '新しい投稿を作成する', new_plaza_post_path, class: 'btn' %>
 
+<!-- ワード検索フォーム -->
+<%= form_with(url: plaza_posts_path, method: :get, local: true) do %>
+  <div>
+    <label for="search_word">キーワード検索:</label>
+    <%= text_field_tag :search_word, params[:search_word] %>
+  </div>
+  <%= submit_tag "検索", class: "btn btn-primary" %>
+  <%= link_to 'クリア', plaza_posts_path, class: 'btn btn-secondary' if params[:search_word].present? %>
+<% end %>
+
 <ul>
   <% page_number = (params[:page] || 1).to_i %>
   <% @plaza_posts.each_with_index do |post, index| %>
