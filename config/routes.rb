@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   resources :bookshelves, only: [:index, :show]
 
   resources :plaza_posts do
-    resources :comments, only: [:create, :destroy, :edit, :update]
+    resources :comments, only: [:create, :destroy, :edit, :update] do
+      member do
+        post :like
+        delete :unlike
+      end
+    end
   end
 
   resources :posts do
