@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_plaza_post
-  before_action :set_comment, only: [:destroy, :update]
+  before_action :set_comment, only: [:like, :unlike, :destroy, :update]
 
   def create
     @comment = @plaza_post.comments.build(comment_params)
@@ -23,13 +23,22 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @plaza_post.comments.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
       redirect_to plaza_post_path(@plaza_post), notice: 'コメントが削除されました。'
     else
       redirect_to plaza_post_path(@plaza_post), alert: 'コメントを削除する権限がありません。'
     end
+  end
+
+  def like
+    @comment.liked_by(current_user)
+    redirect_to plaza_post_path(@plaza_post), notice: 'コメントにいいねしました！'
+  end
+
+  def unlike
+    @comment.unliked_by(current_user)
+    redirect_to plaza_post_path(@plaza_post), notice: 'コメントのいいねを取り消しました！'
   end
 
   private
