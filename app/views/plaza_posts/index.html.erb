@@ -4,7 +4,6 @@
 
 <%= link_to '新しい投稿を作成する', new_plaza_post_path, class: 'btn' %>
 
-<!-- ワード検索フォーム -->
 <%= form_with(url: plaza_posts_path, method: :get, local: true) do %>
   <div>
     <label for="search_word">キーワード検索:</label>
@@ -21,7 +20,6 @@
       <p><%= (page_number - 1) * 10 + index + 1 %> 投稿者: <%= post.user.name %></p>
       <h3><%= link_to post.title, plaza_post_path(post) %></h3>
       <%= l(post.created_at, format: :short) %>
-
       <% if post.user == current_user %>
         <%= link_to '編集', edit_plaza_post_path(post), class: 'btn btn-primary' %>
         <%= link_to '削除', plaza_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
