@@ -1,4 +1,7 @@
 <h1><%= @user.name %> の本棚</h1>
+<p><%= @user.bio %></p>
+
+<%= follow_button(@user) %>
 
 <%= form_with url: bookshelf_path(@user), method: :get, local: true do %>
   <div>

@@ -3,7 +3,17 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      post 'follow', to: 'follows#create'
+      delete 'unfollow', to: 'follows#destroy'
+
+      # フォロワーとフォロー中のルートを追加
+      get 'followers', to: 'users#followers'
+      get 'following', to: 'users#following'
+    end
+  end
+
   get 'profiles/:id', to: 'profiles#show', as: 'profile'
 
   devise_scope :user do

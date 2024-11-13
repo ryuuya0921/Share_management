@@ -5,6 +5,15 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy # ユーザーが削除されたら投稿も削除される
   has_many :plaza_posts, dependent: :destroy # これにより、ユーザーが削除されるとその投稿も削除される
   has_many :comments, dependent: :destroy
+
+  # フォローしているユーザー
+  has_many :active_follows, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy
+  has_many :following, through: :active_follows, source: :followed
+
+  # フォロワー
+  has_many :passive_follows, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy
+  has_many :followers, through: :passive_follows, source: :follower
+
   acts_as_voter
 
   devise :database_authenticatable, :registerable,
@@ -30,6 +39,21 @@ class User < ApplicationRecord
   attr_accessor :remove_profile_image
 
   before_save :purge_profile_image, if: -> { remove_profile_image == '1' }
+
+  # フォローする
+  def follow(other_user)
+    following << other_user unless self == other_user || following.include?(other_user)
+  end
+
+  # フォロー解除
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  # フォローしているか確認
+  def following?(other_user)
+    following.include?(other_user)
+  end
 
   private
 

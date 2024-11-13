@@ -1,4 +1,4 @@
-<h1><%= @user.name %> さんのプロフィール</h1>
+<h1><%= @user.name %>のプロフィール</h1>
 
 <p>アイコン</p>
 <% if @user.profile_image.attached? %>
@@ -7,7 +7,17 @@
   <p>編集からアイコンを設定しよう！</p>
 <% end %>
 
-<p>自己紹介: <%= @user.bio.present? ? @user.bio : '編集から自己紹介を設定しよう！' %></p>
+<p>自己紹介は他のユーザーがあなたのプロフィールを見る際に表示されます。<br>趣味や好きなジャンルなどを書いて、自分をアピールしましょう！</p>
+<p>自己紹介:</p>
+<p><%= @user.bio %></p>
+
+<% if @user.profile_image.attached? %>
+  <p>プロフィール画像:</p>
+  <%= image_tag @user.profile_image.variant(resize_to_limit: [200, 200]) %>
+<% end %>
+
+<p><%= link_to "フォロワー (#{@user.followers.count})", followers_user_path(@user) %></p>
+<p><%= link_to "フォロー (#{@user.following.count})", following_user_path(@user) %></p>
 
 <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
 <p><%= link_to '戻る', user_path(@user) %></p>

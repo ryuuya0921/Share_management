@@ -1,0 +1,17 @@
+<h1><%= @user.name %> がフォローしているユーザー一覧</h1>
+
+<ul>
+  <% @following.each do |followed| %>
+    <li>
+      <%= link_to followed.name, bookshelf_path(followed), class: 'btn btn-link' %>
+      <% if current_user.following.include?(followed) %>
+        <%= button_to 'フォロー解除', unfollow_user_path(followed), method: :delete, class: 'btn btn-danger btn-sm' %>
+      <% else %>
+        <%= button_to 'フォロー', follow_user_path(followed), method: :post, class: 'btn btn-primary btn-sm' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @following %>
+<p><%= link_to '戻る', user_path(@user), class: 'btn btn-secondary' %></p>
