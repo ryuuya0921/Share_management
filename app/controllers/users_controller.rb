@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page]).per(10) # ページネーションを追加
+  end
+
+  def following
+    @user = User.find(params[:id])
+    @following = @user.following.page(params[:page]).per(10) # ページネーションを追加
+  end
+
   def edit
     @user = current_user
   end
