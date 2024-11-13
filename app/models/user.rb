@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :posts, dependent: :destroy # ユーザーが削除されたら投稿も削除される
+  has_many :plaza_posts, dependent: :destroy # これにより、ユーザーが削除されるとその投稿も削除される
+  has_many :comments, dependent: :destroy
   acts_as_voter
 
   devise :database_authenticatable, :registerable,

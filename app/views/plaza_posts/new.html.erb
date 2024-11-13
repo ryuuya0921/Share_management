@@ -1,0 +1,15 @@
+<h1>新しい投稿</h1>
+
+<%= form_with model: @plaza_post, local: true do |form| %>
+  <div>
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <p><%= form.label :content, '内容を入力してください' %></p>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit '投稿する', class: 'btn' %>
+<% end %>
+
+<p><%= link_to 'みんなの広場に戻る', plaza_posts_path, class: 'btn' %></p>
