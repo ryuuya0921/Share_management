@@ -3,7 +3,7 @@
 <ul>
   <% @followers.each do |follower| %>
     <li>
-      <%= link_to follower.name, user_path(follower), class: 'btn btn-link' %>
+      <%= link_to follower.name, bookshelf_path(follower), class: 'btn btn-link' %>
       <% if current_user.following.include?(follower) %>
         <%= button_to 'フォロー解除', unfollow_user_path(follower), method: :delete, class: 'btn btn-danger' %>
       <% else %>
