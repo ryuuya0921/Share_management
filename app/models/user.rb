@@ -40,6 +40,21 @@ class User < ApplicationRecord
 
   before_save :purge_profile_image, if: -> { remove_profile_image == '1' }
 
+  # フォローする
+  def follow(other_user)
+    following << other_user unless self == other_user || following.include?(other_user)
+  end
+
+  # フォロー解除
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  # フォローしているか確認
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
   private
 
   def purge_profile_image
