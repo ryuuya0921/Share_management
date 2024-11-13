@@ -5,6 +5,15 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy # ユーザーが削除されたら投稿も削除される
   has_many :plaza_posts, dependent: :destroy # これにより、ユーザーが削除されるとその投稿も削除される
   has_many :comments, dependent: :destroy
+
+  # フォローしているユーザー
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+
+  # フォロワー
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
   acts_as_voter
 
   devise :database_authenticatable, :registerable,
