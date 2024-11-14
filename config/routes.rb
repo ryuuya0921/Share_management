@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  # ログイン済みユーザー用のルート
+  authenticated :user do
+    root to: 'bookshelves#index', as: :authenticated_root
+  end
+
+  # 未ログインユーザー用のルート
+  unauthenticated do
+    root to: 'home#index', as: :unauthenticated_root
+  end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -20,7 +28,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
-  resources :bookshelves, only: [:index,:show] do
+  resources :bookshelves, only: [:index, :show] do
     member do
       get :post_detail
     end
