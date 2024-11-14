@@ -44,12 +44,4 @@ Rails.application.routes.draw do
       delete 'unlike', to: 'likes#unlike'
     end
   end
-
-  authenticated :user do
-    root 'bookshelves#index', as: :authenticated_root
-  end
-  
-  unauthenticated do
-    root 'home#index', as: :unauthenticated_root
-  end
 end
