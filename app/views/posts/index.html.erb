@@ -53,18 +53,19 @@
     <li>
       <p><%= post.category %></p>
       <p><%= post.genre %></p>
-      <h3><%= link_to post.title, edit_post_path(post) %></h3>
+      <h3><%= link_to post.title, post_path(post) %></h3>
       <% if post.image.attached? %>
-        <%= link_to edit_post_path(post) do %>
+        <%= link_to post_path(post) do %>
           <%= image_tag url_for(post.image), size: "150x150" %>
         <% end %>
       <% else %>
-        <%= link_to edit_post_path(post) do %>
+        <%= link_to post_path(post) do %>
           <%= image_tag 'book_01_brown.png', size: "150x150" %>
         <% end %>
       <% end %>
-      <p><%= post.body.truncate(100) %></p>
+
       <p>状態: <%= post.public ? '公開中' : '非公開中' %></p>
+      <%= link_to '編集する', edit_post_path(post), class: 'btn btn-secondary' %>
       <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
       <p>いいね数: <%= post.get_likes.size %></p>
     </li>
