@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
-  resources :bookshelves, only: [:index, :show]
+  resources :bookshelves, only: [:index,:show] do
+    member do
+      get :post_detail
+    end
+  end
 
   resources :plaza_posts do
     resources :comments, only: [:create, :destroy, :edit, :update] do
