@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
+    authenticated :user do
+      root 'users#show', as: :authenticated_root
+    end
 
   unauthenticated do
     root 'home#index', as: :unauthenticated_root
-  end
-
-  # ログイン済みの場合のルート
-  authenticated :user do
-    root 'users#show', as: :authenticated_root
   end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
