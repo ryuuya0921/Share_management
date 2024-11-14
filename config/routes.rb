@@ -45,11 +45,11 @@ Rails.application.routes.draw do
     end
   end
 
-  def after_sign_in_path_for(resource)
-    dashboard_path
+  authenticated :user do
+    root 'bookshelves#index', as: :authenticated_root
   end
-
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
+  
+  unauthenticated do
+    root 'home#index', as: :unauthenticated_root
   end
 end
