@@ -33,19 +33,24 @@ class PostsController < ApplicationController
 
   def edit; end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  def show; end
 
   def update
-    if @post.update(post_params)
+    # `remove_image`が`'1'`の場合に画像を削除
+    @post.image.purge if post_params[:remove_image] == '1'
+
+    if @post.update(post_params.except(:remove_image))
       redirect_to posts_path, notice: '投稿が更新されました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   private
+
+  def post_params
+    params.require(:post).permit(:title, :body, :category, :genre, :image, :public, :remove_image)
+  end
 
   def load_posts
     posts = current_user.posts
@@ -70,10 +75,6 @@ class PostsController < ApplicationController
 
   def sort_posts(posts)
     params[:sort] == 'oldest' ? posts.order(created_at: :asc) : posts.order(created_at: :desc)
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :body, :category, :genre, :image, :public)
   end
 
   def set_post
