@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'aws-sdk-s3', '~> 1.123'
+
 gem 'pg', '~> 1.2', group: :production
 
 gem 'image_processing', '~> 1.2'

@@ -15,6 +15,11 @@ class BookshelvesController < ApplicationController
     end
   end
 
+  def post_detail
+    @user = User.find(params[:id])
+    @post = Post.find(params[:post_id])
+  end
+
   private
 
   def filter_bookshelves(users)

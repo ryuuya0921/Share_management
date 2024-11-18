@@ -35,6 +35,14 @@
   <div>
     <%= form.label :image, '画像' %>
     <%= form.file_field :image %>
+    
+    <% if @post.image.attached? %>
+      <div>
+        <%= image_tag @post.image, width: 100, height: 100, alt: '現在の画像' %>
+        <%= form.check_box :remove_image %>
+        <%= form.label :remove_image, '画像を削除する' %>
+      </div>
+    <% end %>
   </div>
 
   <div>
