@@ -19,7 +19,7 @@
       <div id="comment-display-<%= comment.id %>">
         <p><%= comment.content %></p>
         <% if comment.user == current_user %>
-          <%= link_to '編集', '#', class: 'btn btn-primary btn-sm', onclick: "toggleEditForm(#{comment.id}); return false;" %>
+          <%= link_to '編集', '#', class: 'btn btn-primary btn-sm', data: { turbo: false }, onclick: "toggleEditForm(#{comment.id}); return false;" %>
           <%= link_to '削除', plaza_post_comment_path(@plaza_post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
         <% end %>
       </div>
