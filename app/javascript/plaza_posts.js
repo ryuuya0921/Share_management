@@ -1,28 +1,15 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('[data-toggle-edit]');
-  let touchHandled = false;
+function toggleEditForm(commentId) {
+  const displayDiv = document.getElementById(`comment-display-${commentId}`);
+  const editFormDiv = document.getElementById(`comment-edit-form-${commentId}`);
 
-  buttons.forEach(button => {
-    // タッチイベントを優先して追加
-    button.addEventListener(
-      'touchstart',
-      function (event) {
-        event.preventDefault();
-        touchHandled = true; // タッチイベントが処理されたことを記録
-        const commentId = this.getAttribute('data-comment-id');
-        toggleEditForm(commentId);
-      },
-      { passive: false }
-    );
+  // 表示を切り替え
+  if (displayDiv.style.display === "none") {
+    displayDiv.style.display = "block";
+    editFormDiv.style.display = "none";
+  } else {
+    displayDiv.style.display = "none";
+    editFormDiv.style.display = "block";
+  }
+}
 
-    // フォールバックとしてクリックイベントを追加
-    button.addEventListener('click', function (event) {
-      if (touchHandled) {
-        touchHandled = false; // タッチイベントが既に処理されている場合はスキップ
-        return;
-      }
-      const commentId = this.getAttribute('data-comment-id');
-      toggleEditForm(commentId);
-    });
-  });
-});
+window.toggleEditForm = toggleEditForm;
