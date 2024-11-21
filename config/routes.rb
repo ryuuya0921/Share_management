@@ -34,14 +34,13 @@ Rails.application.routes.draw do
   end
 
   resources :plaza_posts do
-    resources :comments, only: [:create, :destroy, :edit, :update, :show] do
+    resources :comments, only: [:create, :destroy, :edit, :update] do
       member do
         post :like
         delete :unlike
       end
     end
   end
-  
 
   resources :posts do
     collection do
