@@ -90,7 +90,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: 'smtp.gmail.com',
   port: 587,
-  domain: 'gmail.com',
+  domain: 'omoide-toshokan.com',
   user_name: ENV['SMTP_USER'],
   password: ENV['SMTP_PASSWORD'],
   authentication: 'plain',
