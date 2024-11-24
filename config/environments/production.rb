@@ -2,8 +2,11 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
+  # 本番環境用のホスト情報を設定
+  config.action_mailer.default_url_options = { host: 'www.omoide-toshokan.com', protocol: 'https' }
+
   # Active Storageのサービス設定
-    config.active_storage.service = :amazon
+  config.active_storage.service = :amazon
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -67,7 +70,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
