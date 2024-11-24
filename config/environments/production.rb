@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
 
   # 本番環境用のホスト情報を設定
-  config.action_mailer.default_url_options = { host: 'omoide-toshokan.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'www.omoide-toshokan.com', protocol: 'https' }
 
   # Active Storageのサービス設定
   config.active_storage.service = :amazon
