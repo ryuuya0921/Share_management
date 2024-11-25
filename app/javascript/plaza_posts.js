@@ -13,3 +13,11 @@ function toggleEditForm(commentId) {
 }
 
 window.toggleEditForm = toggleEditForm;
+
+document.addEventListener('touchstart', function(event) {
+  const target = event.target.closest('.btn-primary');
+  if (target && target.dataset.toggleEditForm) {
+    event.preventDefault();
+    toggleEditForm(target.dataset.commentId);
+  }
+});
