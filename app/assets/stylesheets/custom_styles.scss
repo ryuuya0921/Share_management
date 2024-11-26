@@ -1,11 +1,11 @@
 body {
-  background-color: #f5f5dc; /* ベージュ */
+  background-color: #f5f5dc !important; /* ベージュ */
   color: #3e2723; /* ダークブラウン */
-  font-family: "Arial", sans-serif;
+  font-family: "Arial", sans-serif !important;
 }
 
 .navbar {
-  background-color: #795548; /* ウォールナットブラウン */
+  background-color: #795548 !important; /* ウォールナットブラウン */
 }
 
 .nav-link {
@@ -24,22 +24,6 @@ body {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.rounded-circle {
-  border: 2px solid #8d6e63; /* ダークブラウン */
-}
-
-.navbar {
-  background-color: #795548 !important; /* ウォールナットブラウン */
-}
-
-.custom-name {
-  font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN',sans-serif;
-}
-
-h1, h2 {
-  font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', sans-serif;
-}
-
-p {
-  font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', sans-serif;
+.custom-name, h1, h2, p {
+  font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', sans-serif !important;
 }
