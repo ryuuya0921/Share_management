@@ -15,7 +15,6 @@
         <%= (page_number - 1) * 10 + index + 1 %> 名前：<%= comment.user.name %> <%= l(comment.created_at, format: :short) %>
       </strong>
 
-      <!-- コメント表示部分 -->
       <div id="comment-display-<%= comment.id %>">
         <p><%= comment.content %></p>
         <% if comment.user == current_user %>
@@ -24,7 +23,6 @@
         <% end %>
       </div>
 
-      <!-- コメントのいいね機能 -->
       <div>
         <p>いいね数: <%= comment.votes_for.size %></p>
         <% unless comment.user == current_user %>
@@ -36,7 +34,6 @@
         <% end %>
       </div>
 
-      <!-- インライン編集フォーム (デフォルトは非表示) -->
       <div id="comment-edit-form-<%= comment.id %>" style="display: none;">
         <%= form_with(model: [@plaza_post, comment], local: true, method: :patch) do |form| %>
           <div>
