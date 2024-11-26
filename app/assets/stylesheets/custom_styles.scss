@@ -1,0 +1,29 @@
+body {
+  background-color: #f5f5dc !important; /* ベージュ */
+  color: #3e2723; /* ダークブラウン */
+  font-family: "Arial", sans-serif !important;
+}
+
+.navbar {
+  background-color: #ffa280 !important; /* ウォールナットブラウン */
+}
+
+.nav-link {
+  color: #ffffff !important; /* 白文字 */
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #ffcc80 !important; /* 明るい琥珀色 */
+}
+
+.container {
+  background-color: #fefaec; /* アイボリーホワイト */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-name, h1, h2, p {
+  font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', sans-serif !important;
+}
