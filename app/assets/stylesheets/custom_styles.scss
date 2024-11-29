@@ -16,10 +16,22 @@ html, body {
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.navbar-toggler {
+  margin-left: auto;
 }
 
 .nav-link {
   color: #ffffff !important;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -39,4 +51,19 @@ html, body {
 
 .header-profile-image:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    height: auto;
+  }
+
+  .navbar-brand img {
+    max-width: 80px;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
 }
