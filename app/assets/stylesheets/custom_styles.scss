@@ -1,22 +1,42 @@
 body {
-  background-color: #f5f5dc !important; /* ベージュ */
-  color: #3e2723; /* ダークブラウン */
+  background-color: #f5f5dc !important;
+  color: #3e2723;
   font-family: "Arial", sans-serif !important;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
-  background-color: #a4654b !important; /* ウォールナットブラウン */
+  background-color: #a4654b !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
 }
 
 .nav-link {
-  color: #ffffff !important; /* 白文字 */
-  font-weight: bold;
+  color: #ffffff !important;
 }
 
 .nav-link:hover {
-  color: #ffcc80 !important; /* 明るい琥珀色 */
+  color: #ffcc80 !important;
 }
 
 .custom-name, h1, h2, p {
   font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', sans-serif !important;
+}
+
+.header-profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
+}
+
+.header-profile-image:hover {
+  transform: scale(1.1);
 }
