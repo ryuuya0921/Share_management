@@ -3,6 +3,7 @@
   color: #ffffff;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9), -1px -1px 3px rgba(0, 0, 0, 0.9);
   text-align: center;
+  background-size: cover;
   margin-bottom: 80px;
   background-image: image-url("homebook.jpg");
   background-size: 150%;
@@ -49,4 +50,13 @@
 .home_design .btn-success {
   background-color: #006a39;
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .home_design h1 {
+    font-size: 40px;
+    padding: 100px 10px 10px;
+    height: 300px;
+    background-size: cover;
+  }
 }
