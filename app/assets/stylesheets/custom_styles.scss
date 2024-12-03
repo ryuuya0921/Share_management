@@ -67,6 +67,10 @@ html, body {
   .alert-center {
     width: 80%;
     font-size: 14px;
+    bottom: 10%;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
