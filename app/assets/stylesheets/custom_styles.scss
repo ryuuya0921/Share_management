@@ -1,5 +1,5 @@
 body {
-  background-color: #f5f5dc !important;
+  background-color: #ffebd8 !important;
   color: #3e2723;
   font-family: "Arial", sans-serif !important;
 }
@@ -39,7 +39,7 @@ html, body {
 }
 
 .custom-name, h1, h2, p {
-  font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', sans-serif !important;
+  font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
 }
 
 .header-profile-image {
@@ -70,7 +70,7 @@ html, body {
 
 .alert-center {
   position: absolute;
-  top: 100%;
+  top: 165%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
