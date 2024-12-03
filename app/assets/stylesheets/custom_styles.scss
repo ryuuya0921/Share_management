@@ -53,6 +53,23 @@ html, body {
   transform: scale(1.1);
 }
 
+.alert-center {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .alert-center {
+    width: 80%;
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: row;
@@ -66,24 +83,4 @@ html, body {
   .navbar-toggler {
     margin-left: auto;
   }
-
-  .alert-center {
-    position: absolute;
-    top: 200%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-  }
-}
-
-.alert-center {
-  position: absolute;
-  top: 150%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
 }
