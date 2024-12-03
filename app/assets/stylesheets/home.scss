@@ -1,24 +1,22 @@
-body.home.index {
+.home_design h1 {
+  font-size: 60px;
+  color: #ffffff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9), -1px -1px 3px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  margin-bottom: 80px;
   background-image: image-url("pexels-lum3n-44775-309724.jpg");
-  background-size: cover;
+  background-size: 150%;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
-  background-attachment: fixed;
-}
-
-.home_design h1 {
-  font-size: 40px;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  padding: 200px 20px 20px;
+  height: 500px;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 .home_design p {
   font-size: 20px;
-  color: #ffffff;
+  color: #4c3219;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   text-align: center;
 }
@@ -52,4 +50,3 @@ body.home.index {
   background-color: #006a39;
   color: #ffffff;
 }
-
