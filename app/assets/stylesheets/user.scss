@@ -1,0 +1,69 @@
+.card-body h2 a {
+  background-color: #924700;
+  color: #ffffff;
+  border: none;
+}
+
+.card-body h2 a:hover {
+  background-color: #783a00;
+  color: #e0e0e0;
+}
+
+/* みんなの本棚セクション */
+.card-body a.btn-secondary {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.card-body a.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* みんなの広場セクション */
+.card-body a.btn-success {
+  background-color: #1f7934;
+  color: #ffffff;
+}
+
+.card-body a.btn-success:hover {
+  background-color: #218838;
+}
+
+.welcome-banner {
+  background-image: image-url('IMG_0241.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  border-radius: 8px;
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  width: 100%;
+  height: 35vh;
+  margin-bottom: 10%;
+}
+
+.welcome-banner h1, .welcome-banner p {
+  font-size: 150%;
+  margin-top: 5%;
+}
+
+.decorative-frame {
+  border: 2px solid #924700;
+  padding: 20px;
+  margin: 10px auto;
+  max-width: 600px;
+  border-radius: 8px;
+  background-color: #fdf4e3;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .welcome-banner h1,
+  .welcome-banner p {
+    font-size: 70%;
+    margin-top: 15%;
+  }
+}
+
