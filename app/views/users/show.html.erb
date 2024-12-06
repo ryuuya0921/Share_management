@@ -1,25 +1,56 @@
 <% content_for :title, "思い出の図書館" %>
-<h1>ようこそ、<%= current_user.name %> さん。思い出の図書館へ！</h1>
 
-<p><%= current_user.name %> さんのお気に入りの作品を記録しましょう</p>
+<div>
+  <div class="welcome-banner">
+    <h1 class="text-center mb-4">ようこそ、<%= current_user.name %> さん。思い出の図書館へ！</h1>
+    <p class="text-center mb-5"><%= current_user.name %> さんのお気に入りの作品を記録しましょう。</p>
+  </div>
 
-<h2>
-  <%= link_to "#{current_user.name} さんの本棚", posts_path %>
-</h2>
-<p>「本棚」は、あなたがこれまでに観た映画、アニメ、ドラマ、本についての感想を記録する場所です。</p>
-<p>お気に入りの作品や、忘れたくない作品の思い出を残しましょう。</p>
-<p>新しい作品を追加したり、過去の作品にコメントを追記することもできます。</p>
-<p>自分だけの「思い出の図書館」を作ってみてください！</p>
+  <!-- 自分の本棚セクション -->
+  <div class="row mb-4 bookshelf-section">
+    <div class="col-md-6 mx-auto">
+      <div class="card-body text-center">
+        <div class="decorative-frame">
+          <p>「本棚」は、あなたがこれまでに観た映画、アニメ、ドラマ、本についての感想を記録する場所です。</p>
+          <p>お気に入りの作品や、忘れたくない作品の思い出を残しましょう。</p>
+          <p>自分だけの「思い出の図書館」を作ってみてください！</p>
+          <h2 class="card-title">
+            <%= link_to "#{current_user.name} さんの本棚", posts_path, class: "btn btn-primary btn-lg" %>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h2>
-  <%= link_to 'みんなの本棚を見る', bookshelves_path %>
-</h2>
-<p>他のユーザーがどんな作品に興味を持ち、感想を記録しているかを見てみましょう。</p>
-<p>共感できる作品や新しい発見が待っているかもしれません！</p>
+  <!-- みんなの本棚セクション -->
+  <div class="row mb-4 bookshelves-section">
+    <div class="col-md-6 mx-auto">
+      <div class="card-body text-center">
+        <div class="decorative-frame">
+          <p class="mt-3">他のユーザーがどんな作品に興味を持ち、感想を記録しているかを見てみましょう。</p>
+          <p>共感できる作品や新しい発見が待っているかもしれません！</p>
+          <h2 class="card-title">
+            <%= link_to 'みんなの本棚を見る', bookshelves_path, class: "btn btn-secondary btn-lg" %>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h2>
-  <%= link_to 'みんなの広場', plaza_posts_path %>
-</h2>
-<p>「みんなの広場」では、作品についての感想や意見を他のユーザーと共有できます。</p>
-<p>あなたが感動した作品について語り合ったり、他のユーザー様の感想を読んで新しい作品と出会うことができます。</p>
-<p>みんなでお気に入りの作品を語り合いましょう！</p>
+  <!-- みんなの広場セクション -->
+  <div class="row mb-4 plaza-section">
+    <div class="col-md-6 mx-auto">
+      <div class="card-body text-center">
+        <div class="decorative-frame">
+          <p class="mt-3">「みんなの広場」では、作品についての感想や意見を他のユーザーと共有できます。</p>
+          <p>あなたが感動した作品について語り合ったり、他のユーザーの感想を読んで新しい作品と出会うことができます。</p>
+          <p>みんなでお気に入りの作品を語り合いましょう！</p>
+          <h2 class="card-title">
+            <%= link_to 'みんなの広場', plaza_posts_path, class: "btn btn-success btn-lg" %>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
