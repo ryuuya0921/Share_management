@@ -120,7 +120,7 @@
 
   .welcome-banner h1,
   .welcome-banner p {
-    font-size: 70%;
+    font-size: 50%;
     margin-top: 15%;
   }
 
@@ -182,7 +182,7 @@
 
 @media (max-width: 768px) {
   .decorative-seal {
-    top: 13%;
+    top: 20%;
     right: 5%;
     width: 100px;
     height: 100px;
@@ -191,6 +191,16 @@
 }
 
 @media (min-width: 769px) {
+  .decorative-seal {
+    top: calc(35vh * 0.20);
+    right: 30px;
+    width: 150px;
+    height: 150px;
+    transform: rotate(15deg);
+  }
+}
+
+@media (min-width: px) {
   .decorative-seal {
     top: calc(35vh * 0.20);
     right: 30px;
