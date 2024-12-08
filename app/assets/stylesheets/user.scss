@@ -19,14 +19,6 @@
   margin-top: 5%;
 }
 
-@media (max-width: 768px) {
-  .welcome-banner h1,
-  .welcome-banner p {
-    font-size: 70%;
-    margin-top: 15%;
-  }
-}
-
 /* セクション固有の背景画像 */
 .bookshelf-frame {
   background-image: image-url('book.png');
@@ -53,7 +45,6 @@
   margin: 10px auto;
   max-width: 600px;
   border-radius: 8px;
-  // background-position: center;
   background-position: center -20px;
   background-repeat: no-repeat;
   background-color: rgba(253, 244, 227, 0.8);
@@ -102,4 +93,35 @@
 
 .card-body a.btn-success:hover {
   background-color: #218838;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .welcome-banner {
+    height: 25vh;
+    padding: 10px;
+  }
+
+  .welcome-banner h1,
+  .welcome-banner p {
+    font-size: 100%;
+    margin-top: 10%;
+  }
+
+  .decorative-frame {
+    padding: 15px;
+    margin: 10px;
+    max-width: 100%;
+  }
+
+  .bookshelf-frame,
+  .bookshelves-frame,
+  .plaza-frame {
+    background-size: 40%;
+    background-position: center;
+  }
+
+  .card-body h2 a {
+    font-size: 90%;
+  }
 }
