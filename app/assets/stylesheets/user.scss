@@ -30,14 +30,19 @@
 /* セクション固有の背景画像 */
 .bookshelf-frame {
   background-image: image-url('book.png');
+  background-size: 50%;
 }
 
+/* みんなの本棚セクション */
 .bookshelves-frame {
-  background-image: image-url('a.png'); /* みんなの本棚セクション */
+  background-image: image-url('key.png');
+  background-size: 37%;
 }
 
+ /* みんなの広場セクション */
 .plaza-frame {
-  background-image: image-url('coffee.png'); /* みんなの広場セクション */
+  background-image: image-url('coffee.png');
+  background-size: 50%;
 }
 
 /* 共通のデザイン */
@@ -48,8 +53,8 @@
   margin: 10px auto;
   max-width: 600px;
   border-radius: 8px;
-  background-size: 50%;
-  background-position: center;
+  // background-position: center;
+  background-position: center -20px;
   background-repeat: no-repeat;
   background-color: rgba(253, 244, 227, 0.8);
   color: #333;
