@@ -49,9 +49,10 @@
   max-width: 600px;
   border-radius: 8px;
   background-repeat: no-repeat;
-  background-color: rgba(253, 244, 227, 0.8);
+  background-color: rgba(253, 244, 227, 0.37);
   color: #333;
   z-index: 1;
+  font-weight: bold;
 }
 
 .decorative-frame::before {
