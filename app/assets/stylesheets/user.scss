@@ -97,6 +97,20 @@
   background-color: #218838;
 }
 
+.decorative-seal {
+  position: absolute;
+  top: 70px;
+  right: 60%;
+  width: 180px;
+  height: 180px;
+  background-image: image-url('seal.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  transform: rotate(15deg);
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
   .welcome-banner {
@@ -129,5 +143,59 @@
 
   .card-body h2 a {
     font-size: 90%;
+  }
+}
+
+@media (max-width: 1383px) {
+  .welcome-banner {
+    height: 25vh;
+    padding: 10px;
+  }
+
+  .welcome-banner h1,
+  .welcome-banner p {
+    font-size: 80%;
+    margin-top: 10%;
+  }
+
+  .decorative-frame {
+    padding: 15px;
+    margin: 10px;
+    max-width: 100%;
+  }
+
+  .bookshelf-frame,
+  .plaza-frame {
+    background-size: 40%;
+    background-position: center;
+  }
+
+  .bookshelves-frame {
+    background-size: 37%;
+    background-position: center;
+  }
+
+  .card-body h2 a {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .decorative-seal {
+    top: 13%;
+    right: 5%;
+    width: 100px;
+    height: 100px;
+    transform: rotate(10deg);
+  }
+}
+
+@media (min-width: 769px) {
+  .decorative-seal {
+    top: calc(35vh * 0.20);
+    right: 30px;
+    width: 150px;
+    height: 150px;
+    transform: rotate(15deg);
   }
 }
