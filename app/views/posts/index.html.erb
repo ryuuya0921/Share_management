@@ -1,78 +1,89 @@
 <% content_for :title, "思い出の図書館-#{current_user.name}の本棚" %>
-<h1>思い出の図書館</h1>
-<h2><%= current_user.name %> の本棚</h2>
-<p><%= link_to '新規作成', new_post_path %></p>
+<div class="container my-5">
+  <h1 class="text-center mb-4">思い出の図書館</h1>
+  <h2 class="text-center text-muted mb-5"><%= current_user.name %> の本棚</h2>
 
-<%= button_to(
-  current_user.bookshelf_public ? '本棚を非公開にする' : '本棚を公開にする',
-  toggle_bookshelf_visibility_posts_path,
-  method: :post,
-  class: 'btn'
-) %>
+  <div class="d-flex justify-content-end mb-4">
+    <%= link_to '新規作成', new_post_path, class: 'btn btn-primary' %>
+  </div>
 
-<p>
-  本棚の公開設定: 
-  <strong><%= current_user.bookshelf_public ? '公開中です' : '非公開中です' %></strong>
-</p>
-<p>
-  <% if current_user.bookshelf_public %>
-    この本棚は現在公開されており、他のユーザーも閲覧することができます。自分の作品や感想を共有して、共感や新しい発見を楽しみましょう。
-  <% else %>
-    この本棚は現在非公開になっており、あなただけが閲覧できます。プライバシーを保ちながら、自分の記録を楽しむことができます。
+  <div class="text-center mb-4">
+    <%= button_to(
+      current_user.bookshelf_public ? '本棚を非公開にする' : '本棚を公開にする',
+      toggle_bookshelf_visibility_posts_path,
+      method: :post,
+      class: 'btn btn-warning'
+    ) %>
+  </div>
+
+  <div class="alert alert-info text-center">
+    本棚の公開設定: 
+    <strong><%= current_user.bookshelf_public ? '公開中です' : '非公開中です' %></strong>
+  </div>
+
+  <div class="btn-group mb-4" role="group">
+    <%= link_to '公開中', posts_path(status: 'public'), class: 'btn btn-outline-secondary' %>
+    <%= link_to '非公開中', posts_path(status: 'private'), class: 'btn btn-outline-secondary' %>
+    <%= link_to 'すべて表示', posts_path, class: 'btn btn-outline-secondary' %>
+  </div>
+
+  <%= form_with url: posts_path, method: :get, local: true, class: 'mb-4' do %>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label">カテゴリーで検索:</label>
+        <%= select_tag :category, options_for_select(Post.pluck(:category).uniq), include_blank: 'すべて', class: 'form-select' %>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">ジャンルで検索:</label>
+        <%= select_tag :genre, options_for_select(Post.pluck(:genre).uniq), include_blank: 'すべて', class: 'form-select' %>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">ワード検索:</label>
+        <%= text_field_tag :keyword, params[:keyword], class: 'form-control' %>
+      </div>
+      <div class="col-12 text-center">
+        <%= submit_tag '検索', class: 'btn btn-success' %>
+      </div>
+    </div>
   <% end %>
-</p>
 
-<div>
-  <%= link_to '公開中', posts_path(status: 'public'), class: 'btn' %>
-  <%= link_to '非公開中', posts_path(status: 'private'), class: 'btn' %>
-  <%= link_to 'すべて表示', posts_path, class: 'btn' %>
+  <div class="row row-cols-2 row-cols-md-3 g-4">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="book-card">
+            <% if post.image.attached? %>
+              <%= link_to post_path(post) do %>
+                <%= image_tag 'book_01_brown.png', class: 'book-image card-img-top' %>
+              <% end %>
+            <% else %>
+              <%= link_to post_path(post) do %>
+                <%= image_tag 'book_01_brown.png', class: 'book-image card-img-top' %>
+              <% end %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to post.title, post_path(post) %></h5>
+              <p class="card-text"><strong>カテゴリー:</strong> <%= post.category %></p>
+              <p class="card-text"><strong>ジャンル:</strong> <%= post.genre %></p>
+              <p class="card-text"><strong>状態:</strong> <%= post.public ? '公開中' : '非公開中' %></p>
+              <p class="card-text"><strong>いいね数:</strong> <%= post.get_likes.size %></p>
+            </div>
+        </div>
+            <div class="card-footer text-center">
+              <%= link_to '編集する', edit_post_path(post), class: 'btn btn-secondary me-2' %>
+              <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+    <%= paginate @posts %>
+
+
+  <p class="text-center mt-4">あなたの投稿数: <%= @post_count %>件</p>
+  <div class="text-center">
+    <%= link_to 'みんなの本棚を見る', bookshelves_path, class: 'btn btn-info' %>
+  </div>
 </div>
 
-<div>
-  <%= link_to '最新順', posts_path(sort: 'latest'), class: 'btn' %>
-  <%= link_to '過去順', posts_path(sort: 'oldest'), class: 'btn' %>
-</div>
-
-<%= form_with url: posts_path, method: :get, local: true do %>
-  <div>
-    <label>カテゴリーで検索:</label>
-    <%= select_tag :category, options_for_select(Post.pluck(:category).uniq), include_blank: 'すべて' %>
-  </div>
-  <div>
-    <label>ジャンルで検索:</label>
-    <%= select_tag :genre, options_for_select(Post.pluck(:genre).uniq), include_blank: 'すべて' %>
-  </div>
-  <div>
-    <label>ワード検索:</label>
-    <%= text_field_tag :keyword, params[:keyword] %>
-  </div>
-  <%= submit_tag '検索', class: 'btn' %>
-<% end %>
-
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <p><%= post.category %></p>
-      <p><%= post.genre %></p>
-      <h3><%= link_to post.title, post_path(post) %></h3>
-      <% if post.image.attached? %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag url_for(post.image), size: "150x150" %>
-        <% end %>
-      <% else %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag 'book_01_brown.png', size: "150x150" %>
-        <% end %>
-      <% end %>
-
-      <p>状態: <%= post.public ? '公開中' : '非公開中' %></p>
-      <%= link_to '編集する', edit_post_path(post), class: 'btn btn-secondary' %>
-      <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-      <p>いいね数: <%= post.get_likes.size %></p>
-    </li>
-  <% end %>
-</ul>
-
-<%= paginate @posts %>
-<p>あなたの投稿数: <%= @post_count %>件</p>
-<p><%= link_to 'みんなの本棚を見る', bookshelves_path %></p>
