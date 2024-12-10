@@ -13,6 +13,8 @@ gem 'image_processing', '~> 1.2'
 
 gem 'kaminari'
 
+gem 'kaminari-bootstrap'
+
 gem 'acts_as_votable'
 
 gem 'letter_opener'
