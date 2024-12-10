@@ -16,9 +16,19 @@
     ) %>
   </div>
 
-  <div class="alert alert-info text-center">
+  <div class="alert text-center <%= current_user.bookshelf_public ? 'alert-success' : 'alert-danger' %>">
     本棚の公開設定: 
     <strong><%= current_user.bookshelf_public ? '公開中です' : '非公開中です' %></strong>
+  </div>
+
+  <div>
+    <p>
+      <% if current_user.bookshelf_public %>
+        この本棚は現在公開されており、他のユーザーも閲覧することができます。自分の作品や感想を共有して、共感や新しい発見を楽しみましょう。
+      <% else %>
+        この本棚は現在非公開になっており、あなただけが閲覧できます。プライバシーを保ちながら、自分の記録を楽しむことができます。
+      <% end %>
+    </p>
   </div>
 
   <div class="btn-group mb-4" role="group">
