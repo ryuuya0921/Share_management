@@ -78,7 +78,9 @@
     <% end %>
   </div>
 
-  <%= paginate @posts, theme: 'bootstrap4' %>
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @posts, theme: 'bootstrap4' %>
+  </div>
 
   <p class="text-center mt-4">あなたの投稿数: <%= @post_count %>件</p>
   <div class="text-center">
