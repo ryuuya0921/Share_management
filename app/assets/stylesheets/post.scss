@@ -1,0 +1,21 @@
+.book-image {
+  width: 150px;
+  height: 200px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin-top: 30px;
+}
+
+.book-card {
+  margin-bottom: 100px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
