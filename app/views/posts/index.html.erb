@@ -35,6 +35,8 @@
     <%= link_to '公開中', posts_path(status: 'public'), class: 'btn btn-outline-secondary' %>
     <%= link_to '非公開中', posts_path(status: 'private'), class: 'btn btn-outline-secondary' %>
     <%= link_to 'すべて表示', posts_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to '最新順', posts_path(sort: 'latest'), class: 'btn btn-outline-secondary' %>
+    <%= link_to '過去順', posts_path(sort: 'oldest'), class: 'btn btn-outline-secondary' %>
   </div>
 
   <%= form_with url: posts_path, method: :get, local: true, class: 'mb-4' do %>
