@@ -1,0 +1,99 @@
+.post_new {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.form-actions .btn-primary {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+}
+
+.form-actions .btn-primary:hover {
+  background-color: #218838;
+}
+
+.post-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control,
+.form-select,
+.form-textarea,
+.form-file {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.error-messages {
+  margin-bottom: 20px;
+  color: #d9534f;
+}
+
+.error-messages ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.image-preview {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.preview-image {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* 戻るボタンのスタイル */
+.btn btn-secondary mt-3 {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 18px;
+}
