@@ -1,0 +1,96 @@
+/* 全体のコンテナ */
+.bookshelf-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* タイトル */
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* ユーザー数 */
+.user-count {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* リスト */
+.bookshelf-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.bookshelf-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: calc(33.333% - 20px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.bookshelf-item:hover {
+  transform: translateY(-5px);
+}
+
+/* 本棚タイトル */
+.bookshelf-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.bookshelf-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.bookshelf-link:hover {
+  text-decoration: underline;
+}
+
+/* 投稿数 */
+.post-count {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* フォローボタン */
+.follow-button {
+  margin-top: 10px;
+}
+
+/* 戻るボタン */
+.return-link {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.return-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #28a745;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.return-button:hover {
+  background: #218838;
+}
