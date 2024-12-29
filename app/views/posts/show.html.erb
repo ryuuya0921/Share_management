@@ -26,7 +26,7 @@
   <div class="row justify-content-center mt-2">
     <div class="col-md-6 text-center">
       <p>状態: 
-        <strong class="post-status <%= @post.public ? 'text-success' : 'text-danger' %>">
+        <strong class="custom-post-status <%= @post.public ? 'success' : 'danger' %>">
           <%= @post.public ? '公開中' : '非公開中' %>
         </strong>
       </p>
