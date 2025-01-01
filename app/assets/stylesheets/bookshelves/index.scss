@@ -43,6 +43,7 @@
   transition: transform 0.3s;
 }
 
+/* ポップアップ */
 .bookshelf-item:hover {
   transform: translateY(-5px);
 }
@@ -97,9 +98,9 @@
 
 .rabbit-image {
   width: 100%;
-  max-width: 250px; /* 最大幅を指定 */
+  max-width: 250px;
   height: auto;
   object-fit: contain;
-  margin: 30px 0 0; /* 上に余白を追加 */
-  float: right; /* 左寄せ */
+  margin: 30px 0 0;
+  float: right;
 }
