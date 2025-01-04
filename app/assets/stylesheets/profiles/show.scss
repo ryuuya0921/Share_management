@@ -47,6 +47,7 @@
 
 /* 自己紹介 */
 .profile-bio {
+  text-align: center;
   margin-bottom: 20px;
   margin: 20px 0;
   padding: 20px;
@@ -70,16 +71,10 @@
   white-space: pre-wrap;
 }
 
-/* リンク */
+// /* リンク */
 .profile-links {
   text-align: center;
   margin-bottom: 20px;
-}
-
-.profile-link {
-  color: #32aa25;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .profile-link:hover {
@@ -91,38 +86,7 @@
   text-align: center;
 }
 
-.btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 4px;
-  text-decoration: none;
-  display: inline-block;
+.rose-image {
+  max-width: 200px;
+  margin-top: 30px;
 }
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: #fff;
-  border: none;
-}
-
-.btn-secondary:hover {
-  background-color: #565e64;
-}
-
-.no-profile-icon {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #999;
-  margin-top: 10px;
-}
-
