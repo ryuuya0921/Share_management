@@ -36,7 +36,6 @@ class PostsController < ApplicationController
   def show; end
 
   def update
-    # `remove_image`が`'1'`の場合に画像を削除
     @post.image.purge if post_params[:remove_image] == '1'
 
     if @post.update(post_params.except(:remove_image))
@@ -56,7 +55,7 @@ class PostsController < ApplicationController
     posts = current_user.posts
     posts = filter_by_status(posts)
     posts = sort_posts(posts)
-    filter_posts(posts).page(params[:page]).per(9)
+    filter_posts(posts).page(params[:page]).per(6)
   end
 
   def load_posts_without_pagination
