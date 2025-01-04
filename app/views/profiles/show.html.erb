@@ -1,23 +1,38 @@
-<h1><%= @user.name %>のプロフィール</h1>
+<div class="profile-container">
+  <h1 class="profile-title"><%= @user.name %>のプロフィール</h1>
 
-<p>アイコン</p>
-<% if @user.profile_image.attached? %>
-  <%= image_tag @user.profile_image.variant(resize_to_limit: [100, 100]) %>
-<% else %>
-  <p>編集からアイコンを設定しよう！</p>
-<% end %>
+  <div class="profile-icon">
+    <p class="profile-label">アイコン</p>
+    <% if @user.profile_image.attached? %>
+      <%= image_tag @user.profile_image.variant(resize_to_limit: [500, 500]), class: "profile-image" %>
+    <% else %>
+      <p class="no-profile-icon">編集からアイコンを設定しよう！</p>
+    <% end %>
+  </div>
 
-<p>自己紹介は他のユーザーがあなたのプロフィールを見る際に表示されます。<br>趣味や好きなジャンルなどを書いて、自分をアピールしましょう！</p>
-<p>自己紹介:</p>
-<p><%= @user.bio %></p>
+  <div class="profile-bio">
+    <p class="profile-label">自己紹介</p>
+    <p class="bio-description">
+      自己紹介は他のユーザーがあなたのプロフィールを見る際に表示されます。
+      趣味や好きなジャンルなどを書いて、自分をアピールしましょう！
+    </p>
+    <p class="bio-text"><%= @user.bio %></p>
+  </div>
 
-<% if @user.profile_image.attached? %>
-  <p>プロフィール画像:</p>
-  <%= image_tag @user.profile_image.variant(resize_to_limit: [200, 200]) %>
-<% end %>
+  <% if @user.profile_image.attached? %>
+    <div class="profile-large-image">
+      <p class="profile-label">プロフィール画像</p>
+      <%= image_tag @user.profile_image.variant(resize_to_limit: [500, 500]), class: "large-profile-image" %>
+    </div>
+  <% end %>
 
-<p><%= link_to "フォロワー (#{@user.followers.count})", followers_user_path(@user) %></p>
-<p><%= link_to "フォロー (#{@user.following.count})", following_user_path(@user) %></p>
+  <div class="profile-links">
+    <p><%= link_to "フォロワー (#{@user.followers.count})", followers_user_path(@user), class: "btn btn-primary btn-sm" %></p>
+    <p><%= link_to "フォロー (#{@user.following.count})", following_user_path(@user), class: "btn btn-danger btn-sm" %></p>
+  </div>
 
-<%= link_to 'プロフィールを編集', edit_user_path(@user) %>
-<p><%= link_to '戻る', user_path(@user) %></p>
+  <div class="profile-actions">
+    <%= link_to 'プロフィールを編集', edit_user_path(@user), class: "btn btn-success" %>
+    <%= link_to '戻る', user_path(@user), class: "btn btn-secondary" %>
+  </div>
+</div>
