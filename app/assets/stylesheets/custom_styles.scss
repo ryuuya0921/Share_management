@@ -63,6 +63,14 @@ html, body {
   border-radius: 8px;
 }
 
+.profile-images {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
 @media (max-width: 768px) {
   .alert-center {
     width: 80%;
