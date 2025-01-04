@@ -56,9 +56,9 @@
               <% if user_signed_in? && @user.present? %>
                 <li class="nav-item">
                   <% if @user.profile_image.attached? %>
-                    <%= image_tag @user.profile_image.variant(resize_to_limit: [50, 50]), class: "rounded-circle ms-2", alt: "Profile Image" %>
+                    <%= image_tag @user.profile_image.variant(resize_to_limit: [500, 500]), class: "profile-images", alt: "Profile Image" %>
                   <% else %>
-                    <%= image_tag 'default_profile_image.png', size: '50x50', class: "rounded-circle ms-2", alt: "Default Profile Image" %>
+                    <%= image_tag 'default_profile_image.png', size: '50x50', class: "profile-images", alt: "Default Profile Image" %>
                   <% end %>
                 </li>
               <% end %>
