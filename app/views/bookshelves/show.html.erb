@@ -1,49 +1,68 @@
 <% content_for :title, "#{@user.name} さんの本棚" %>
-<h1><%= @user.name %> の本棚</h1>
-<p><%= @user.bio %></p>
-
-<%= follow_button(@user) %>
-
-<%= form_with url: bookshelf_path(@user), method: :get, local: true do %>
-  <div>
-    <label>カテゴリーで検索:</label>
-    <%= select_tag :category, options_for_select(Post.distinct.pluck(:category), params[:category]), include_blank: 'すべて' %>
+<div class="container my-5">
+  <h1 class="text-center mb-4"><%= @user.name %> の本棚</h1>
+  <p class="text-center text-muted"><%= @user.bio %></p>
+  <div class="text-center mb-4">
+    <%= follow_button(@user) %>
   </div>
-  <div>
-    <label>ジャンルで検索:</label>
-    <%= select_tag :genre, options_for_select(Post.distinct.pluck(:genre), params[:genre]), include_blank: 'すべて' %>
-  </div>
-  <div>
-    <label>ワード検索:</label>
-    <%= text_field_tag :keyword, params[:keyword] %>
-  </div>
-  <%= submit_tag '検索', class: 'btn' %>
-<% end %>
 
-<ul>
-  <% @bookshelf.each do |post| %>
-    <%= link_to post.title, post_detail_bookshelf_path(@user, post_id: post.id) %>
-    <p>カテゴリー: <%= post.category %></p>
-    <p>ジャンル: <%= post.genre %></p>
-
-    <% if post.image.attached? %>
-      <%= link_to post_detail_bookshelf_path(@user, post_id: post.id) do %>
-        <%= image_tag post.image.variant(resize_to_limit: [150, 150]), alt: "投稿画像" %>
-      <% end %>
-    <% else %>
-      <%= link_to post_detail_bookshelf_path(@user, post_id: post.id) do %>
-        <%= image_tag 'book_01_brown.png', size: "150x150", alt: "デフォルト画像" %>
-      <% end %>
-    <% end %>
-
-    <% if current_user.voted_for?(post) %>
-      <%= button_to 'いいねを取り消す', unlike_post_path(post), method: :delete, class: 'btn' %>
-    <% else %>
-      <%= button_to 'いいね', like_post_path(post), method: :post, class: 'btn' %>
-    <% end %>
-    <p>いいね数: <%= post.get_likes.size %></p>
+  <%= form_with url: bookshelf_path(@user), method: :get, local: true, class: "mb-4" do %>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="category" class="form-label">カテゴリーで検索:</label>
+        <%= select_tag :category, options_for_select(Post.distinct.pluck(:category), params[:category]), include_blank: 'すべて', class: "form-select" %>
+      </div>
+      <div class="col-md-4">
+        <label for="genre" class="form-label">ジャンルで検索:</label>
+        <%= select_tag :genre, options_for_select(Post.distinct.pluck(:genre), params[:genre]), include_blank: 'すべて', class: "form-select" %>
+      </div>
+      <div class="col-md-4">
+        <label for="keyword" class="form-label">ワード検索:</label>
+        <%= text_field_tag :keyword, params[:keyword], class: "form-control" %>
+      </div>
+      <div class="col-12 text-center">
+        <%= submit_tag '検索', class: "btn btn-success mt-3" %>
+      </div>
+    </div>
   <% end %>
-</ul>
 
-<%= paginate @bookshelf %>
-<p><%= link_to 'みんなの本棚に戻る', bookshelves_path %></p>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @bookshelf.each do |post| %>
+      <div class="col">
+        <div class="card h-100">
+          <% if post.image.attached? %>
+            <%= link_to post_detail_bookshelf_path(@user, post_id: post.id) do %>
+              <%= image_tag post.image.variant(resize_to_limit: [150, 150]), class: "card-img-top", alt: "投稿画像" %>
+            <% end %>
+          <% else %>
+            <%= link_to post_detail_bookshelf_path(@user, post_id: post.id) do %>
+              <%= image_tag 'book_01_brown.png', size: "150x150", class: "card-img-top", alt: "デフォルト画像" %>
+            <% end %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= link_to post.title, post_detail_bookshelf_path(@user, post_id: post.id) %></h5>
+            <p class="card-text"><strong>カテゴリー:</strong> <%= post.category %></p>
+            <p class="card-text"><strong>ジャンル:</strong> <%= post.genre %></p>
+          </div>
+          <div class="card-footer text-center">
+            <% if current_user.voted_for?(post) %>
+              <%= button_to 'いいねを取り消す', unlike_post_path(post), method: :delete, class: 'btn btn-danger me-2' %>
+            <% else %>
+              <%= button_to 'いいね', like_post_path(post), method: :post, class: 'btn btn-primary' %>
+            <% end %>
+            <p class="mt-2">いいね数: <%= post.get_likes.size %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @bookshelf %>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to 'みんなの本棚に戻る', bookshelves_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
+

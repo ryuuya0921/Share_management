@@ -1,0 +1,98 @@
+body {
+  background-color: #ffebd8 !important;
+  color: #3e2723;
+  font-family: "Arial", sans-serif !important;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #472314 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.navbar-toggler {
+  margin-left: auto;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #ffcc80 !important;
+}
+
+.custom-name, h1, h2, p {
+  font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
+}
+
+.header-profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
+}
+
+.header-profile-image:hover {
+  transform: scale(1.1);
+}
+
+.alert-center {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+}
+
+.profile-images {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+@media (max-width: 768px) {
+  .alert-center {
+    width: 80%;
+    font-size: 14px;
+    bottom: 75%;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    height: auto;
+  }
+
+  .navbar-brand img {
+    max-width: 80px;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+}

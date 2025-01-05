@@ -1,17 +1,22 @@
-<% content_for :title, "思い出の図書館-パスワード確認" %>
-<h2>パスワードをお忘れですか？</h2>
+<% content_for :title, "思い出の図書館 - パスワード確認" %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">パスワードをお忘れですか？</h2>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "needs-validation" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mb-3">
+      <%= f.label :email, "メールアドレス", class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "例: example@example.com" %>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <%= f.submit "パスワード再設定の案内を送信する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+  <div class="text-center mt-3">
+    <%= render "devise/shared/links", link_class: "btn btn-secondary btn-sm" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "パスワード再設定の案内を送信する" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

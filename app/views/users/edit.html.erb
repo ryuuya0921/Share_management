@@ -1,34 +1,36 @@
-<%= form_for @user, html: { multipart: true } do |f| %>
+<%= form_for @user, html: { multipart: true, class: "user-profile-form" } do |f| %>
   <% unless @user.guest? %>
-    <div class="field">
-      <%= f.label :name, "名前：" %>
-      <%= f.text_field :name, placeholder: "新しい名前を入力" %>
+    <div class="form-group">
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name, placeholder: "新しい名前を入力", class: "form-control" %>
     </div>
   <% else %>
-      <p>ゲストユーザー様は名前の変更はできません。</p>
+    <div class="form-group">
+      <p class="guest-message">ゲストユーザー様は名前の変更はできません。</p>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :profile_image, "プロフィール画像" %><br>
-    <%= f.file_field :profile_image %>
+  <div class="form-group">
+    <%= f.label :profile_image, "プロフィール画像", class: "form-label" %>
+    <%= f.file_field :profile_image, class: "form-control-file" %>
     <% if @user.profile_image.attached? %>
-      <p>現在の画像:</p>
-      <%= image_tag @user.profile_image.variant(resize_to_limit: [100, 100]) %>
+      <p class="current-image-label">現在の画像</p>
+      <%= image_tag @user.profile_image.variant(resize_to_limit: [100, 100]), class: "current-profile-image" %>
 
-      <div class="field">
-        <%= f.check_box :remove_profile_image %>
-        <%= f.label :remove_profile_image, "プロフィール画像を削除する" %>
+      <div class="form-check">
+        <%= f.check_box :remove_profile_image, class: "form-check-input" %>
+        <%= f.label :remove_profile_image, "プロフィール画像を削除する", class: "form-check-label" %>
       </div>
     <% end %>
   </div>
 
-  <div>
-    <%= f.label :bio, "自己紹介" %><br>
-    <%= f.text_area :bio, rows: 5 %>
+  <div class="form-group">
+    <%= f.label :bio, "自己紹介", class: "form-label" %>
+    <%= f.text_area :bio, rows: 5, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "更新" %>
+  <div class="form-actions">
+    <%= f.submit "更新", class: "btn btn-primary" %>
+    <%= link_to '戻る', profile_path(current_user), class: "btn btn-secondary" %>
   </div>
-  <%= link_to '戻る', profile_path(current_user) %>
 <% end %>

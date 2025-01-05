@@ -93,7 +93,7 @@ ja:
       updated: "アカウント情報が正常に更新されました。"
       updated_but_not_signed_in: "アカウント情報が正常に更新されましたが、パスワードが変更されたため、再度ログインが必要です。"
     sessions:
-      signed_in: "ようこそ！思い出の森へ！"
+      signed_in: "ようこそ！思い出の図書館へ！"
       signed_out: "正常にログアウトしました。"
       already_signed_out: "すでにログアウトしています。"
     unlocks:

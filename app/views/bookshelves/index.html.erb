@@ -1,13 +1,27 @@
-<% content_for :title, "思い出の図書館-みんなの本棚" %>
-<h1>みんなの本棚</h1>
-<p>みんなの本棚のユーザー数: <%= @total_users %></p>
-<ul>
-  <% @bookshelves.each do |user| %>
-    <li>
-      <h2><%= link_to "#{user.name} の本棚", bookshelf_path(user) %></h2>
-      <p>投稿数: <%= user.posts.where(public: true).count %></p>
-      <%= follow_button(user) %>
-    </li>
-  <% end %>
-</ul>
-  <%= link_to "自分の本棚に戻る", posts_path %>
+<% content_for :title, "思い出の図書館 - みんなの本棚" %>
+
+<div class="bookshelf-container">
+  <h1 class="title">みんなの本棚</h1>
+  <p class="user-count">みんなの本棚のユーザー数: <strong><%= @total_users %></strong></p>
+  
+  <ul class="bookshelf-list">
+    <% @bookshelves.each do |user| %>
+      <li class="bookshelf-item">
+        <h2 class="bookshelf-title">
+          <%= link_to "#{user.name} の本棚", bookshelf_path(user), class: "bookshelf-link" %>
+        </h2>
+        <p class="post-count">投稿数: <%= user.posts.where(public: true).count %></p>
+        <div class="follow-button">
+          <%= follow_button(user) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="return-link">
+    <%= link_to "自分の本棚に戻る", posts_path, class: "return-button" %>
+  </div>
+  <div class="parent">
+    <%= image_tag "rabbit.png", alt: "Rabbit", class: "rabbit-image" %>
+  </div>
+</div>

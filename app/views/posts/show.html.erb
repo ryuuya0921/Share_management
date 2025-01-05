@@ -1,14 +1,36 @@
 <% content_for :title, "投稿詳細 - #{@post.title}" %>
 
-<h1><%= @post.title %></h1>
+<div class="container post-detail">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="post-title"><%= @post.title %></h1>
+    </div>
+  </div>
 
-<% if @post.image.attached? %>
-  <%= image_tag @post.image.variant(resize_to_limit: [200, 200]), alt: "投稿画像", class: "post-image" %>
-<% else %>
-  <%= image_tag 'book_01_brown.png', size: "200x200", alt: "デフォルト画像", class: "post-image" %>
-<% end %>
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image.variant(resize_to_limit: [400, 400]), alt: "投稿画像", class: "post-image rounded shadow-sm" %>
+      <% else %>
+        <%= image_tag 'book_01_brown.png', size: "200x200", alt: "デフォルト画像", class: "post-image rounded shadow-sm" %>
+      <% end %>
+    </div>
+  </div>
 
-<p><%= @post.body %></p>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <p class="post-body"><%= @post.body %></p>
+    </div>
+  </div>
 
-<p>状態: <strong><%= @post.public ? '公開中' : '非公開中' %></strong></p>
-<p><%= link_to '戻る', posts_path %></p>
+  <div class="row justify-content-center mt-2">
+    <div class="col-md-6 text-center">
+      <p>状態: 
+        <strong class="custom-post-status <%= @post.public ? 'success' : 'danger' %>">
+          <%= @post.public ? '公開中' : '非公開中' %>
+        </strong>
+      </p>
+      <%= link_to '戻る', posts_path, class: "btn btn-secondary mt-3" %>
+    </div>
+  </div>
+</div>

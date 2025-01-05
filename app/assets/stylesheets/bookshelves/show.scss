@@ -1,0 +1,28 @@
+.card-img-top {
+  width: 150px;
+  height: 200px;
+  object-fit: contain;
+  margin-top: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.btn {
+  font-size: 0.9rem;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.form-select, .form-control {
+  font-size: 0.9rem;
+}

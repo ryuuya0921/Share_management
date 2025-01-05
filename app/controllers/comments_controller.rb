@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = @plaza_post.comments.find(params[:id])
+  end
+
   def update
     if @comment.update(comment_params)
       redirect_to plaza_post_path(@plaza_post), notice: 'コメントが更新されました。'

@@ -1,16 +1,20 @@
-<h1>投稿の編集</h1>
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">投稿の編集</h1>
 
-<%= form_with(model: @plaza_post, local: true) do |form| %>
-  <div>
-    <%= form.label :title, 'タイトル' %><br>
-    <%= form.text_field :title %>
-  </div>
+  <%= form_with(model: @plaza_post, local: true, class: "needs-validation") do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, 'タイトル', class: 'form-label' %>
+      <%= form.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください' %>
+    </div>
 
-  <div>
-    <%= form.label :content, '内容' %><br>
-    <%= form.text_area :content %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :content, '内容', class: 'form-label' %>
+      <%= form.text_area :content, class: 'form-control', rows: 5, placeholder: '投稿内容を入力してください' %>
+    </div>
 
-  <%= form.submit '更新', class: 'btn btn-primary' %>
-  <%= link_to 'キャンセル', plaza_post_path(@plaza_post), class: 'btn' %>
-<% end %>
+    <div class="text-center gap-2">
+      <%= form.submit '更新', class: 'btn btn-success' %>
+      <%= link_to 'キャンセル', plaza_post_path(@plaza_post), class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

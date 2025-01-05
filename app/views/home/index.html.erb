@@ -1,8 +1,12 @@
-<h1>思い出の図書館</h1>
-<p>あなたの心を動かした映画、アニメ、漫画、本を「思い出の図書館」に記録してみませんか？</p>
-<p>忘れたくない作品や、大切な思い出を残すことで、いつでも振り返ることができます。</p>
-<p>新しい作品との出会いを楽しみながら、あなただけの図書館を作り上げましょう。</p>
+<div class="home_design">
+  <h1>思い出の図書館</h1>
+  <p>あなたの心を動かした映画、アニメ、漫画、本を「思い出の図書館」に記録してみませんか？</p>
+  <p>忘れたくない作品や、大切な思い出を残すことで、いつでも振り返ることができます。</p>
+  <p>新しい作品との出会いを楽しみながら、あなただけの図書館を作り上げましょう。</p>
 
-<%= link_to "新規登録", new_user_registration_path %>
-<%= link_to "ログイン", new_user_session_path %>
-<%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+  <div class="btn-group">
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
+    <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-success" %>
+  </div>
+</div>
