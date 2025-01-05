@@ -75,7 +75,9 @@
           <%= form.label :content, 'コメント内容', class: 'form-label' %>
           <%= form.text_area :content, class: 'form-control' %>
         </div>
-        <%= form.submit 'コメントを投稿', class: 'btn btn-success' %>
+        <div class="text-end">
+          <%= form.submit 'コメントを投稿', class: 'btn btn-success' %>
+        </div>
       <% end %>
     </div>
   </div>
