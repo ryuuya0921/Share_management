@@ -1,59 +1,86 @@
-<h2><%= @plaza_post.title %></h2>
-<p><%= @plaza_post.content %></p>
-<p>投稿者: <%= @plaza_post.user.name %> | <%= l(@plaza_post.created_at, format: :long) %></p>
-<% if @plaza_post.user == current_user %>
-  <%= link_to '編集', edit_plaza_post_path(@plaza_post), class: 'btn btn-primary' %>
-  <%= link_to '削除', plaza_post_path(@plaza_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
-<% end %>
-
-<h3>コメント一覧</h3>
-<ul>
-  <% page_number = (params[:page] || 1).to_i %>
-  <% @comments.each_with_index do |comment, index| %>
-    <li>
-      <strong>
-        <%= (page_number - 1) * 10 + index + 1 %> 名前：<%= comment.user.name %> <%= l(comment.created_at, format: :short) %>
-      </strong>
-
-      <div id="comment-display-<%= comment.id %>">
-        <p><%= comment.content %></p>
-        <% if comment.user == current_user %>
-          <%= link_to '編集', '#', class: 'btn btn-primary btn-sm', data: { turbo: false }, onclick: "toggleEditForm(#{comment.id}); return false;" %>
-          <%= link_to '削除', plaza_post_comment_path(@plaza_post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
-        <% end %>
-      </div>
-
-      <div>
-        <p>いいね数: <%= comment.votes_for.size %></p>
-        <% unless comment.user == current_user %>
-          <% if current_user.voted_for?(comment) %>
-            <%= button_to 'いいねを取り消す', unlike_plaza_post_comment_path(@plaza_post, comment), method: :delete, class: 'btn btn-danger btn-sm' %>
-          <% else %>
-            <%= button_to 'いいね', like_plaza_post_comment_path(@plaza_post, comment), method: :post, class: 'btn btn-primary btn-sm' %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div id="comment-edit-form-<%= comment.id %>" style="display: none;">
-        <%= form_with(model: [@plaza_post, comment], local: true, method: :patch) do |form| %>
-          <div>
-            <%= form.text_area :content, value: comment.content %>
-          </div>
-          <%= form.submit '更新', class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'キャンセル', '#', class: 'btn btn-secondary btn-sm', onclick: "toggleEditForm(#{comment.id}); return false;" %>
-        <% end %>
-      </div>
-    </li>
-  <% end %>
-</ul>
-
-<%= paginate @comments %>
-
-<%= form_with(model: [@plaza_post, Comment.new], local: true) do |form| %>
-  <div>
-    <%= form.label :content, 'コメント内容' %><br>
-    <%= form.text_area :content %>
+<div class="container mt-5">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title"><%= @plaza_post.title %></h2>
+      <p class="card-text"><%= @plaza_post.content %></p>
+      <p class="text-muted">
+        投稿者: <%= @plaza_post.user.name %> | <%= l(@plaza_post.created_at, format: :long) %>
+      </p>
+      <% if @plaza_post.user == current_user %>
+        <div class="d-flex gap-2">
+          <%= link_to '編集', edit_plaza_post_path(@plaza_post), class: 'btn btn-primary' %>
+          <%= link_to '削除', plaza_post_path(@plaza_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <%= form.submit 'コメントを投稿', class: 'btn btn-primary' %>
-<% end %>
-<p><%= link_to 'みんなの広場に戻る', plaza_posts_path, class: 'btn' %></p>
+
+  <h3 class="mb-4 text-center">コメント一覧</h3>
+  <ul class="list-group mb-4">
+    <% page_number = (params[:page] || 1).to_i %>
+    <% @comments.each_with_index do |comment, index| %>
+      <li class="list-group-item">
+        <div>
+          <p class="mb-1">
+            <strong><%= (page_number - 1) * 10 + index + 1 %>. 名前：<%= comment.user.name %></strong>
+            <span class="text-muted"> | <%= l(comment.created_at, format: :short) %></span>
+          </p>
+          <p><%= comment.content %></p>
+
+          <div class="d-flex align-items-center justify-content-between">
+            <div>
+              <p class="mb-1 text-muted">いいね数: <%= comment.votes_for.size %></p>
+              <% unless comment.user == current_user %>
+                <% if current_user.voted_for?(comment) %>
+                  <%= button_to 'いいねを取り消す', unlike_plaza_post_comment_path(@plaza_post, comment), method: :delete, class: 'btn btn-danger btn-sm' %>
+                <% else %>
+                  <%= button_to 'いいね', like_plaza_post_comment_path(@plaza_post, comment), method: :post, class: 'btn btn-primary btn-sm' %>
+                <% end %>
+              <% end %>
+            </div>
+
+            <% if comment.user == current_user %>
+              <div class="d-flex gap-2">
+                <%= link_to '編集', edit_plaza_post_comment_path(@plaza_post, comment), class: 'btn btn-primary btn-sm' %>
+                <%= link_to '削除', plaza_post_comment_path(@plaza_post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
+              </div>
+            <% end %>
+          </div>
+
+          <div id="comment-edit-form-<%= comment.id %>" style="display: none;">
+            <%= form_with(model: [@plaza_post, comment], local: true, method: :patch, class: "mt-2") do |form| %>
+              <div class="mb-2">
+                <%= form.text_area :content, value: comment.content, class: "form-control" %>
+              </div>
+              <div class="d-flex gap-2">
+                <%= form.submit '更新', class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'キャンセル', '#', class: 'btn btn-secondary btn-sm', onclick: "toggleEditForm(#{comment.id}); return false;" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="d-flex justify-content-center">
+    <%= paginate @comments, theme: 'bootstrap4' %>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h4 class="text-center">新しいコメントを投稿</h4>
+      <%= form_with(model: [@plaza_post, Comment.new], local: true) do |form| %>
+        <div class="mb-3">
+          <%= form.label :content, 'コメント内容', class: 'form-label' %>
+          <%= form.text_area :content, class: 'form-control' %>
+        </div>
+        <%= form.submit 'コメントを投稿', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to 'みんなの広場に戻る', plaza_posts_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
