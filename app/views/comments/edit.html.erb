@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2 class="mb-4">コメントを編集</h2>
+
+  <%= form_with(model: [@plaza_post, @comment], local: true, method: :patch) do |form| %>
+    <div class="mb-3">
+      <%= form.label :content, 'コメント内容', class: 'form-label' %>
+      <%= form.text_area :content, value: @comment.content, class: 'form-control' %>
+    </div>
+    <div class="d-flex gap-2">
+      <%= form.submit '更新', class: 'btn btn-primary' %>
+      <%= link_to 'キャンセル', plaza_post_path(@plaza_post), class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>
