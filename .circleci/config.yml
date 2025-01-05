@@ -25,3 +25,9 @@ jobs:
       - run:
           name: Run request specs
           command: bundle exec rspec spec/requests
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - request_specs
