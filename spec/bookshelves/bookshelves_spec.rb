@@ -7,7 +7,6 @@ RSpec.describe 'Bookshelves', type: :request do
     let!(:public_post) { create(:post, user: other_user, public: true) }
 
     before do
-      # ログインをシミュレート
       sign_in current_user
       get bookshelves_path
     end
