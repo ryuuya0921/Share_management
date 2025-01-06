@@ -2,16 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Bookshelves', type: :request do
   describe 'GET /bookshelves' do
-    before do
-      # ログインユーザーと他のユーザーを作成
-      current_user = create(:user)
-      other_user = create(:user)
-      create(:post, user: other_user, public: true)
+    let(:current_user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let!(:public_post) { create(:post, user: other_user, public: true) }
 
+    before do
       # ログインをシミュレート
       sign_in current_user
-
-      # GETリクエストを送信
       get bookshelves_path
     end
 
@@ -21,6 +18,14 @@ RSpec.describe 'Bookshelves', type: :request do
 
     it 'ページのタイトルが正しいこと' do
       expect(response.body).to include('思い出の図書館 - みんなの本棚')
+    end
+
+    it '他のユーザーの本棚が表示されていること' do
+      expect(response.body).to include("#{other_user.name} の本棚")
+    end
+
+    it '投稿数が正しく表示されていること' do
+      expect(response.body).to include("投稿数: #{other_user.posts.where(public: true).count}")
     end
   end
 end
