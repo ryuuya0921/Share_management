@@ -1,10 +1,27 @@
 RSpec.describe 'Bookshelf Page', type: :request do
   let(:user) { create(:user, name: 'テストユーザー', bio: 'テストの自己紹介') }
   let(:post_with_image) do
-    create(:post, user:, title: '画像付き投稿', category: 'カテゴリ1', genre: 'ジャンル1', 
-           image: fixture_file_upload(Rails.root.join('spec/fixtures/files/test_image.png'), 'image/png'))
+    create(
+      :post,
+      user:,
+      title: '画像付き投稿',
+      category: 'カテゴリ1',
+      genre: 'ジャンル1',
+      image: fixture_file_upload(
+        Rails.root.join('spec/fixtures/files/test_image.png'),
+        'image/png'
+      )
+    )
   end
-  let(:post_without_image) { create(:post, user:, title: '画像なし投稿', category: 'カテゴリ2', genre: 'ジャンル2') }
+  let(:post_without_image) do
+    create(
+      :post,
+      user:,
+      title: '画像なし投稿',
+      category: 'カテゴリ2',
+      genre: 'ジャンル2'
+    )
+  end
 
   before do
     sign_in user
@@ -32,6 +49,22 @@ RSpec.describe 'Bookshelf Page', type: :request do
       before do
         post_with_image
         get bookshelf_path(user)
+      end
+
+      it '投稿画像が表示されていること' do
+        expect(response.body).to include('test_image.png')
+      end
+    end
+
+    context '画像が添付されていない投稿がある場合' do
+      before do
+        post_without_image
+        get bookshelf_path(user)
+      end
+
+      it 'デフォルト画像が表示されていること' do
+        default_image_path = ActionController::Base.helpers.asset_path('book_01_brown.png')
+        expect(response.body).to include(default_image_path)
       end
     end
   end
