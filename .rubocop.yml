@@ -17,3 +17,6 @@ Style/Documentation:
 Style/SymbolArray:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
