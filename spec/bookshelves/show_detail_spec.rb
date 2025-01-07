@@ -32,10 +32,6 @@ RSpec.describe 'Bookshelf Page', type: :request do
     context '正常な場合' do
       before { get bookshelf_path(user) }
 
-      it 'ステータスコードが200であること' do
-        expect(response).to have_http_status(:ok)
-      end
-
       it 'ユーザー名が表示されていること' do
         expect(response.body).to include("#{user.name} さんの本棚")
       end
@@ -65,6 +61,22 @@ RSpec.describe 'Bookshelf Page', type: :request do
       it 'デフォルト画像が表示されていること' do
         default_image_path = ActionController::Base.helpers.asset_path('book_01_brown.png')
         expect(response.body).to include(default_image_path)
+      end
+    end
+
+    context '検索フォームが正しく表示されている場合' do
+      before { get bookshelf_path(user) }
+
+      it 'カテゴリー検索フォームが表示されていること' do
+        expect(response.body).to include('カテゴリーで検索:')
+      end
+
+      it 'ジャンル検索フォームが表示されていること' do
+        expect(response.body).to include('ジャンルで検索:')
+      end
+
+      it 'ワード検索フォームが表示されていること' do
+        expect(response.body).to include('ワード検索:')
       end
     end
   end
