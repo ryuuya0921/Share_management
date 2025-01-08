@@ -1,6 +1,17 @@
 <div class="container mt-5">
   <h1 class="mb-4 text-center">投稿の編集</h1>
 
+  <% if @plaza_post.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>エラーが発生しました</h4>
+      <ul>
+        <% @plaza_post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with(model: @plaza_post, local: true, class: "needs-validation") do |form| %>
     <div class="mb-3">
       <%= form.label :title, 'タイトル', class: 'form-label' %>
