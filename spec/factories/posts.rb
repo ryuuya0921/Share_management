@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :post do
-    title { 'Sample Post' }
-    body { 'This is a sample post body.' }
-    category { 'Default Category' }
-    genre { 'Default Genre' }
+    title { 'サンプル投稿' }
+    body { 'これはサンプル投稿の本文です。' }
+    category { 'デフォルトカテゴリー' }
+    genre { 'デフォルトジャンル' }
     public { true }
     association :user
   end
