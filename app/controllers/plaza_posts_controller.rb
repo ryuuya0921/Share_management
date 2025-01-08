@@ -31,7 +31,7 @@ class PlazaPostsController < ApplicationController
   def create
     @plaza_post = current_user.plaza_posts.build(plaza_post_params)
     if @plaza_post.save
-      redirect_to plaza_posts_path, notice: '投稿が作成されました。'
+      redirect_to plaza_post_path(@plaza_post), notice: '投稿が作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
