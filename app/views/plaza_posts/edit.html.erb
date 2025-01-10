@@ -1,6 +1,8 @@
 <div class="container mt-5">
   <h1 class="mb-4 text-center">投稿の編集</h1>
 
+<%= render 'plaza_posts/error_messages', object: @plaza_post %>
+
   <%= form_with(model: @plaza_post, local: true, class: "needs-validation") do |form| %>
     <div class="mb-3">
       <%= form.label :title, 'タイトル', class: 'form-label' %>

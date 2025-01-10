@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path, notice: '投稿が作成されました。'
+      redirect_to @post, notice: '投稿が作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post.image.purge if post_params[:remove_image] == '1'
 
     if @post.update(post_params.except(:remove_image))
-      redirect_to posts_path, notice: '投稿が更新されました'
+      redirect_to @post, notice: '投稿が更新されました'
     else
       render :edit, status: :unprocessable_entity
     end

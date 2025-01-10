@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to plaza_post_path(@plaza_post), notice: 'コメントが更新されました。'
     else
-      redirect_to plaza_post_path(@plaza_post), alert: 'コメントの更新に失敗しました。'
+      flash.now[:alert] = 'コメントの更新に失敗しました。'
+      render :edit, status: :unprocessable_entity
     end
   end
 
