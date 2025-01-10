@@ -21,6 +21,12 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+
+    if @user.guest? && params[:user][:name].present?
+      flash[:alert] = 'ゲストユーザーは名前の変更を行えません。'
+      redirect_to edit_user_path(@user) and return
+    end
+
     if @user.update(user_params)
       redirect_to profile_path(@user), notice: 'プロフィールが更新されました。'
     else
