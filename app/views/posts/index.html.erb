@@ -73,13 +73,19 @@
                 <%= image_tag 'book_01_brown.png', class: 'book-image card-img-top' %>
               <% end %>
             <% end %>
-            <div class="card-body">
+
+          <div class="card-body">
               <h5 class="card-title"><%= link_to post.title, post_path(post) %></h5>
               <p class="card-text"><strong>カテゴリー:</strong> <%= post.category %></p>
               <p class="card-text"><strong>ジャンル:</strong> <%= post.genre %></p>
-              <p class="card-text"><strong>状態:</strong> <%= post.public ? '公開中' : '非公開中' %></p>
+            <p class="card-text">
+                <strong>状態:</strong>
+              <span class="<%= post.public ? 'text-success' : 'text-danger' %>">
+                <%= post.public ? '公開中' : '非公開中' %>
+              </span>
+            </p>
               <p class="card-text"><strong>いいね数:</strong> <%= post.get_likes.size %></p>
-            </div>
+          </div>
         </div>
             <div class="card-footer text-center">
               <%= link_to '編集する', edit_post_path(post), class: 'btn btn-secondary me-2' %>
