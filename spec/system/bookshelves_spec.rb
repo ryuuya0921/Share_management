@@ -9,7 +9,7 @@ RSpec.describe 'みんなの本棚', type: :system do
   let!(:other_post) { create(:post, user: user2, public: true) }
 
   before do
-    driven_by(:rack_test)
+    driven_by(:selenium_chrome)
     sign_in current_user
     visit bookshelves_path
   end
