@@ -53,19 +53,21 @@ RSpec.describe '投稿編集ページ', type: :system do
     it '添付画像を削除できる' do
       # 画像を添付
       post.image.attach(io: File.open(Rails.root.join('spec/fixtures/files/test_image.png')), filename: 'test_image.png')
-
+    
       # 添付されていることを確認
       expect(post.image.attached?).to be_truthy
-
+    
       # 編集ページに移動
       visit edit_post_path(post)
-
+    
       # 画像削除を選択
       check '画像を削除する'
       click_button '更新する'
-
+    
+      # デバッグ: テスト中のHTMLを出力
       puts page.html
     
+      # 再読み込みして画像が削除されていることを確認
       post.reload
       expect(post.image.attached?).to be_falsey
     end
