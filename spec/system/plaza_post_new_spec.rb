@@ -43,13 +43,10 @@ RSpec.describe 'PlazaPost Creation', type: :system do
     it '「みんなの広場に戻る」リンクが正しく動作すること' do
       visit new_plaza_post_path
 
-      # リンクが正しいURLを持つか確認
       expect(page).to have_link('みんなの広場に戻る', href: plaza_posts_path)
 
-      # リンクをクリック
       click_link 'みんなの広場に戻る'
 
-      # ページが正しく遷移したか確認
       expect(page).to have_current_path(plaza_posts_path, ignore_query: true)
     end
   end
