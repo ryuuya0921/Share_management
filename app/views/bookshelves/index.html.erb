@@ -7,6 +7,9 @@
   <ul class="bookshelf-list">
     <% @bookshelves.each do |user| %>
       <li class="bookshelf-item">
+        <div class="user-profile">
+          <%= image_tag user.profile_image.attached? ? user.profile_image.variant(resize_to_limit: [500, 500]) : asset_path("default_profile_image.png"), alt: "#{user.name}のプロフィール画像", class: "profile-image" %>
+        </div>
         <h2 class="bookshelf-title">
           <%= link_to "#{user.name} の本棚", bookshelf_path(user), class: "bookshelf-link" %>
         </h2>
