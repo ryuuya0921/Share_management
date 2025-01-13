@@ -7,12 +7,25 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
+    <div class="row justify-content-center">
     <div class="col-md-6 text-center">
       <% if @post.image.attached? %>
         <%= image_tag @post.image.variant(resize_to_limit: [400, 400]), alt: "投稿画像", class: "post-image rounded shadow-sm" %>
       <% else %>
         <%= image_tag 'book_01_brown.png', size: "200x200", alt: "デフォルト画像", class: "post-image rounded shadow-sm" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <%= form_with(model: @post, local: true) do |form| %>
+        <div class="star-rating">
+          <% 1.upto(5) do |i| %>
+            <%= form.radio_button :rating, i, id: "rating_#{i}", class: "star-input", checked: @post.rating == i %>
+            <%= label_tag "rating_#{i}", "★", class: "star" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
