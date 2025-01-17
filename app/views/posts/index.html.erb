@@ -85,6 +85,12 @@
               </span>
             </p>
               <p class="card-text"><strong>いいね数:</strong> <%= post.get_likes.size %></p>
+            <div class="star-rating">
+              <% 1.upto(5) do |i| %>
+                <%= radio_button_tag "rating_#{post.id}", i, post.rating == i, id: "rating_#{post.id}_#{i}", class: 'star-input', disabled: true %>
+                <%= label_tag "rating_#{post.id}_#{i}", '★', class: 'star' %>
+              <% end %>
+            </div>
           </div>
         </div>
             <div class="card-footer text-center">

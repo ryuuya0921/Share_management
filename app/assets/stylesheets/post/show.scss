@@ -31,3 +31,19 @@
 .custom-post-status.danger {
   color: #dc3545;
 }
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.star {
+  font-size: 32px;
+  color: #ccc;
+}
+
+.star.filled {
+  color: #ffcc00;
+}

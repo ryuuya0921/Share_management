@@ -91,9 +91,36 @@
   background-color: #5a6268;
 }
 
-/* 戻るボタンのスタイル */
 .btn btn-secondary mt-3 {
   margin-top: 30px;
   text-align: center;
   font-size: 18px;
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  direction: rtl;
+}
+
+.star {
+  font-size: 32px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star:hover,
+.star:hover ~ .star {
+  color: #ffcc00;
+}
+
+.star-input {
+  display: none;
+}
+
+.star-input:checked ~ .star {
+  color: #ffcc00;
 }

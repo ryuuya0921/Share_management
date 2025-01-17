@@ -14,6 +14,15 @@
       <% else %>
         <%= image_tag 'book_01_brown.png', size: "200x200", alt: "デフォルト画像", class: "post-image rounded shadow-sm" %>
       <% end %>
+
+      <%= form_with(model: @post, local: true) do |form| %>
+        <div class="star-rating">
+          <% 1.upto(5) do |i| %>
+            <%= form.radio_button :rating, i, id: "rating_#{i}", class: "star-input", checked: @post.rating == i %>
+            <%= label_tag "rating_#{i}", "★", class: "star" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
