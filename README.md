@@ -89,3 +89,6 @@ https://www.omoide-toshokan.com
 - 本棚自体を他ユーザーへ「公開・非公開」設定することもできます。
 
 ![本棚公開](https://github.com/user-attachments/assets/7553ba95-5fc2-4a54-b6b2-ba3c91769dfb)
+
+<img src="https://github.com/user-attachments/assets/7553ba95-5fc2-4a54-b6b2-ba3c91769dfb" style="width:50%;">
+
