@@ -79,7 +79,7 @@ https://www.omoide-toshokan.com
 - パスワード再設定機能の実装
 - ユーザーがパスワードを忘れた場合にリセット可能
 
-![image](https://github.com/user-attachments/assets/a07c79b8-b951-4645-a950-ff98fd7368c9)
+<img src="https://github.com/user-attachments/assets/a07c79b8-b951-4645-a950-ff98fd7368c9" width="300">
 
 
 
