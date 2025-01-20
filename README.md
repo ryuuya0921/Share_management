@@ -84,11 +84,9 @@ https://www.omoide-toshokan.com
 ### 本棚へ登録
 - 新規登録を行い、作成した作品を本棚に表示することができます。また「公開・非公開」を選択することで、個別に他ユーザーへ公開するかどうか？設定できます。
 
-![新規登録](https://github.com/user-attachments/assets/442bbb27-5a21-4623-877d-978210f48375)
+<img src="https://github.com/user-attachments/assets/442bbb27-5a21-4623-877d-978210f48375" style="width:50%;">
 
 - 本棚自体を他ユーザーへ「公開・非公開」設定することもできます。
-
-![本棚公開](https://github.com/user-attachments/assets/7553ba95-5fc2-4a54-b6b2-ba3c91769dfb)
 
 <img src="https://github.com/user-attachments/assets/7553ba95-5fc2-4a54-b6b2-ba3c91769dfb" style="width:50%;">
 
