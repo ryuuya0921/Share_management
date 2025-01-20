@@ -72,14 +72,14 @@ https://www.omoide-toshokan.com
 
 - deviceを使用したログイン機能です。メールアドレスログイン、ゲストログインを実装。
   
-![ログインデモ](https://github.com/user-attachments/assets/2afd340c-c01a-455a-9efd-5a7517696869)
+<img src="https://github.com/user-attachments/assets/2afd340c-c01a-455a-9efd-5a7517696869" style="width:50%;">
 
 ### パスワード再設定
 
 - パスワード再設定機能の実装
 - ユーザーがパスワードを忘れた場合にリセット可能
 
-<img src="https://github.com/user-attachments/assets/a07c79b8-b951-4645-a950-ff98fd7368c9" width="300">
+<img src="https://github.com/user-attachments/assets/a07c79b8-b951-4645-a950-ff98fd7368c9" style="width:50%;">
 
 ### 本棚へ登録
 - 新規登録を行い、作成した作品を本棚に表示することができます。また「公開・非公開」を選択することで、個別に他ユーザーへ公開するかどうか？設定できます。
