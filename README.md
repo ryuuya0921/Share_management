@@ -13,7 +13,7 @@ https://github.com/ryuuya0921/Share_management
 
 https://www.omoide-toshokan.com
 
-### 機能一覧
+## 機能一覧
 #### ユーザー認証機能(Devise)
 - ログイン / サインアップ
 - ゲストログイン機能
@@ -36,14 +36,12 @@ https://www.omoide-toshokan.com
 - UIデザイン (Bootstrap, Tailwind CSS)
 - レスポンシブ対応
 
-### 使用技術
-
-## 🛠 使用技術一覧
+## 使用技術
 
 | カテゴリ | 使用技術・ツール |
 |----------|----------------|
 | **フレームワーク** | Ruby on Rails 7.0.8 |
-| **プログラミング言語** | Ruby 3.2.2, JavaScript, HTML, CSS |
+| **プログラミング言語** | Ruby 3.2.2, HTML, CSS |
 | **データベース** | PostgreSQL (本番環境), SQLite3 (開発・テスト環境) |
 | **ウェブサーバー** | Puma |
 | **フロントエンド** | Bootstrap 5.3.0, Turbo Rails, Stimulus |
