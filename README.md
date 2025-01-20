@@ -1,4 +1,4 @@
-# 思い出の図書館
+ｓ# 思い出の図書館
 
 ## 概要
 思い出の図書館はこれまで見た映画、アニメ、漫画、本の感想を記録し、共有できる管理型共有アプリです。
@@ -87,8 +87,4 @@ https://www.omoide-toshokan.com
 ![image](https://github.com/user-attachments/assets/f5e5312e-1c87-4c66-91ba-c4d0eba10b4e)
 
 - 本棚自体を他ユーザーへ「公開・非公開」設定することもできます。
-
-![image](https://github.com/user-attachments/assets/e676e954-5296-4628-bf49-779db0ad7622)
-
-
-
+![image](https://github.com/user-attachments/assets/c541ddfb-03b6-4782-833d-94a9efbd32c8)
