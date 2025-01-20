@@ -74,12 +74,21 @@ https://www.omoide-toshokan.com
   
 ![ログインデモ](https://github.com/user-attachments/assets/bfda2e79-80df-48b4-9502-bb2272a972a7)
 
-### 🎯 パスワード再設定
+### パスワード再設定
 
 - パスワード再設定機能の実装
 - ユーザーがパスワードを忘れた場合にリセット可能
 
 <img src="https://github.com/user-attachments/assets/a07c79b8-b951-4645-a950-ff98fd7368c9" width="300">
+
+### 本棚へ登録
+- 新規登録を行い、作成した作品を本棚に表示することができます。また「公開・非公開」を選択することで、個別に他ユーザーへ公開するかどうか？設定できます。
+
+![image](https://github.com/user-attachments/assets/f5e5312e-1c87-4c66-91ba-c4d0eba10b4e)
+
+- 本棚自体を他ユーザーへ「公開・非公開」設定することもできます。
+
+![image](https://github.com/user-attachments/assets/e676e954-5296-4628-bf49-779db0ad7622)
 
 
 
