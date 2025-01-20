@@ -95,4 +95,7 @@ https://www.omoide-toshokan.com
 
 <img src="https://github.com/user-attachments/assets/f9777709-7852-402d-864e-b809b3c83b8d" style="width:50%;">
 
+- 作成順や公開・非公開、絞りたいジャンルでも検索することもできます。
+
+<img src="https://github.com/user-attachments/assets/aeacc7e7-a804-4b0e-ae9e-bd9636d23ec8" style="width:50%;">
 
