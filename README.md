@@ -49,7 +49,7 @@ https://www.omoide-toshokan.com
 ### TOPページ
 - ユーザーの本棚、他ユーザーの本棚、掲示板と3つの内容がすぐに分かるように表示しています。
 
-<img src="https://github.com/user-attachments/assets/f4598d17-c6c5-4be9-905f-977f7d6d871f" style="width:200%;">
+<img src="https://github.com/user-attachments/assets/f4598d17-c6c5-4be9-905f-977f7d6d871f" style="width:50%;">
 
 
 ログインページ
