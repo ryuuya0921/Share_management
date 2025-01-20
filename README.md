@@ -66,3 +66,7 @@ https://www.omoide-toshokan.com
 | **CSSプリプロセッサ** | dartsass-sprockets |
 | **バンドル管理** | Bundler |
 | **デプロイ** | Heroku, AWS S3 |
+
+## 機能紹介
+ログインページ
+![ログインデモ](https://your-github-repo.com/path/to/your-gif.gif)
