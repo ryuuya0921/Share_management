@@ -72,7 +72,7 @@ https://www.omoide-toshokan.com
 
 - deviceを使用したログイン機能です。メールアドレスログイン、ゲストログインを実装。
   
-<img src="https://github.com/user-attachments/assets/2afd340c-c01a-455a-9efd-5a7517696869" style="width:80%;">
+<img src="https://github.com/user-attachments/assets/2afd340c-c01a-455a-9efd-5a7517696869" style="width:150%;">
 
 ### パスワード再設定
 
