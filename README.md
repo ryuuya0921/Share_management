@@ -45,16 +45,23 @@ https://www.omoide-toshokan.com
 | **デプロイ** | Heroku, AWS S3 |
 
 ## 機能紹介
+
+### TOPページ
+- ユーザーの本棚、他ユーザーの本棚、掲示板と3つの内容がすぐに分かるように表示しています。
+
+<img src="https://github.com/user-attachments/assets/f4598d17-c6c5-4be9-905f-977f7d6d871f" style="width:200%;">
+
+
 ログインページ
 
-- deviceを使用したログイン機能です。メールアドレスログイン、ゲストログインを実装。
+- deviceを使用したログイン機能です。メールアドレスログイン、ゲストログインを実装しています。
   
 <img src="https://github.com/user-attachments/assets/2afd340c-c01a-455a-9efd-5a7517696869" style="width:200%;">
 
 ### パスワード再設定
 
-- パスワード再設定機能の実装
-- ユーザーがパスワードを忘れた場合にリセット可能
+- パスワード再設定機能を実装しています。
+- ユーザーがパスワードを忘れた場合に再設定が可能になっています。
 
 <img src="https://github.com/user-attachments/assets/a07c79b8-b951-4645-a950-ff98fd7368c9" style="width:50%;">
 
