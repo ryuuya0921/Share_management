@@ -92,7 +92,7 @@ https://www.omoide-toshokan.com
 - 「いいね！」やコメントで感想を共有
 - **検索・フィルタリング機能**（カテゴリ / ジャンル / ワード検索）
 
-<img src="https://github.com/user-attachments/assets/7cfec678-1eaf-407c-93b0-40c146e742ab style="width:50%;">
+<img src="https://github.com/user-attachments/assets/7cfec678-1eaf-407c-93b0-40c146e742ab" style="width:50%;">
 
 ## 機能一覧
 #### ユーザー認証機能(Devise)
