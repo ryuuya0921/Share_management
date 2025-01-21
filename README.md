@@ -102,11 +102,11 @@ https://www.omoide-toshokan.com
 
 - **ユーザーがトピックを作成**
 
-![Image](https://github.com/user-attachments/assets/ed74c8dd-2426-4477-b923-8addc361b2db)
+<img src="https://github.com/user-attachments/assets/ed74c8dd-2426-4477-b923-8addc361b2db" style="width:50%;">
 
 - **リアルタイムでコメント投稿**
 
-![Image](https://github.com/user-attachments/assets/c4610df4-e06a-48d5-9c7e-c66d56136dc9)
+<img src="https://github.com/user-attachments/assets/c4610df4-e06a-48d5-9c7e-c66d56136dc9" style="width:50%;">
 
 ## 機能一覧
 #### ユーザー認証機能(Devise)
