@@ -103,7 +103,7 @@ https://www.omoide-toshokan.com
 
 #### その他機能
 - ページネーション (kaminari)
-- UIデザイン (Bootstrap, Tailwind CSS)
+- UIデザイン (Bootstrap,CSS)
 - レスポンシブ対応
 
 ## 学習・参考にしたもの
