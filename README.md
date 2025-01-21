@@ -83,6 +83,17 @@ https://www.omoide-toshokan.com
 
 <img src="https://github.com/user-attachments/assets/aeacc7e7-a804-4b0e-ae9e-bd9636d23ec8" style="width:50%;">
 
+## みんなの本棚
+他のユーザーの本棚を閲覧できる機能になります。  
+映画・アニメ・漫画・小説のレビューを見たり、「いいね！」やコメントをすることで交流できます。
+
+🔹 **主な機能**
+- 他ユーザーの本棚を閲覧
+- 「いいね！」やコメントで感想を共有
+- **検索・フィルタリング機能**（カテゴリ / ジャンル / ワード検索）
+
+<img src="https://github.com/user-attachments/assets/7cfec678-1eaf-407c-93b0-40c146e742ab style="width:50%;">
+
 ## 機能一覧
 #### ユーザー認証機能(Devise)
 - ログイン / サインアップ
