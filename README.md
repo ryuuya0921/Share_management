@@ -95,8 +95,8 @@ https://www.omoide-toshokan.com
 <img src="https://github.com/user-attachments/assets/7cfec678-1eaf-407c-93b0-40c146e742ab" style="width:50%;">
 
 ## みんなの広場
-作品について自由に意見交換できる掲示板。  
-感動したシーンの共有や、おすすめ作品の紹介ができます。
+作品について自由に意見交換できる掲示板になります。  
+ここでは、感動したシーンの共有や、おすすめ作品の紹介ができます。
 
 **主な機能**
 
