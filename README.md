@@ -92,7 +92,7 @@ https://www.omoide-toshokan.com
 - 「いいね！」やコメントで感想を共有
 - **検索・フィルタリング機能**（カテゴリ / ジャンル / ワード検索）
 
-<img src="https://github.com/user-attachments/assets/7cfec678-1eaf-407c-93b0-40c146e742ab" style="width:50%;">
+<img src="https://github.com/user-attachments/assets/a412a7f1-9db2-4da3-af93-6a829818330a" style="width:50%;">
 
 ## みんなの広場
 作品について自由に意見交換できる掲示板になります。  
