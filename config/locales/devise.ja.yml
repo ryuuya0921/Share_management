@@ -3,6 +3,7 @@ ja:
     formats:
       short: "%Y/%m/%d %H:%M"
       long: "%Y年%m月%d日 %H時%M分"
+
   views:
     pagination:
       first: "最初"
@@ -10,6 +11,7 @@ ja:
       previous: "前"
       next: "次"
       truncate: "..."
+
   activerecord:
     models:
       user: "ユーザー"
@@ -30,11 +32,12 @@ ja:
         user:
           attributes:
             email:
-              blank: 'メールアドレスを入力してください'
+              blank: "メールアドレスを入力してください"
+              taken: "このメールアドレスはすでに登録されています"
             password:
-              blank: 'パスワードを入力してください'
+              blank: "パスワードを入力してください"
             password_confirmation:
-              confirmation: 'パスワード確認が一致しません'
+              confirmation: "パスワード確認が一致しません"
         post:
           attributes:
             title:
@@ -47,6 +50,7 @@ ja:
               blank: "ジャンルを選択してください"
             user:
               required: "ユーザーは必須です"
+
   devise:
     confirmations:
       confirmed: "メールアドレスが正常に確認されました。"
@@ -85,7 +89,7 @@ ja:
       updated_not_active: "パスワードが正常に変更されました。"
     registrations:
       destroyed: "さようなら！アカウントは正常に削除されました。またお会いできることを願っています！"
-      signed_up: "ようこそ！思い出の森へ！"
+      signed_up: "ようこそ！思い出の図書館へ！"
       signed_up_but_inactive: "正常に登録されましたが、アカウントはまだ有効化されていません。"
       signed_up_but_locked: "正常に登録されましたが、アカウントはロックされています。"
       signed_up_but_unconfirmed: "確認リンクを記載したメールが送信されました。メール内のリンクをクリックしてアカウントを有効化してください。"
@@ -100,17 +104,19 @@ ja:
       send_instructions: "数分以内にアカウントロック解除手順を記載したメールが届きます。"
       send_paranoid_instructions: "アカウントが存在する場合、数分以内にロック解除手順を記載したメールが届きます。"
       unlocked: "アカウントのロックが正常に解除されました。続けるにはログインしてください。"
+
   errors:
     format: '%{message}'
     messages:
       blank: "入力してください"
+      taken: "すでに使用されています"
       too_short: "%{count}文字以上で入力してください"
       already_confirmed: "すでに確認されています。ログインしてください。"
       confirmation_period_expired: "確認期限が過ぎています（%{period}以内に確認が必要）。新しい確認をリクエストしてください。"
       expired: "期限が切れています。新しいリクエストをしてください。"
       not_found: "見つかりません。"
       not_locked: "ロックされていません。"
-      confirmation: 'パスワード確認が一致しません'
+      confirmation: "パスワード確認が一致しません"
       not_saved:
         one: "1件のエラーにより、%{resource}を保存できませんでした。"
         other: "%{count}件のエラーにより、%{resource}を保存できませんでした。"
